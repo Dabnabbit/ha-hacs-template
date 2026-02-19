@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 1 of 7 (Scaffold Fixes)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-19 — Roadmap created; 7 phases defined, 49 requirements mapped
+Plan: 0 of 2 in current phase
+Status: Planned — ready to execute
+Last activity: 2026-02-19 — Phase 1 planned: 2 plans in 1 wave, verification passed
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -53,10 +53,18 @@ None yet.
 ### Blockers/Concerns
 
 - [Phase 4]: LitElement version (Lit 2.x vs 3.x) in HA 2025.7 needs confirmation at smoke-test time — extraction pattern works regardless but API differences may surface
-- [Phase 1]: Static path URL convention (`/hacsfiles/` vs `/local/custom_components/`) needs verification for card JS registered from integration (not HACS)
+- [Phase 1]: RESOLVED — Research confirmed: use `/{DOMAIN}/` prefix (not `/hacsfiles/`). `/hacsfiles/` is HACS-owned namespace for cards HACS downloads. Plan 01-01 updates const.py accordingly.
 
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Roadmap created — ready to run /gsd:plan-phase 1
+Stopped at: Phase 1 planned and verified — ready to run /gsd:execute-phase 1
 Resume file: None
+
+### Phase 1 Planning Summary
+- **Research:** HIGH confidence on all 8 SCAF requirements (01-RESEARCH.md)
+- **Plan 01-01 (Wave 1):** Fix integration core — __init__.py (async_setup + runtime_data), coordinator.py (async_get_clientsession), sensor.py (runtime_data access), const.py (URL prefix fix), hacs.json (version bump). Covers SCAF-01, 02, 04, 07, 08.
+- **Plan 01-02 (Wave 1):** Fix config flow — unique_id + abort duplicate, connection validation stub, OptionsFlow base class, options flow strings. Covers SCAF-03, 05, 06.
+- **Both plans are Wave 1 (parallel)** — disjoint file sets, no dependencies.
+- **Verification:** Passed all 7 dimensions. No issues found.
+- **No CONTEXT.md** — user chose to proceed without discuss-phase (Phase 1 is correctness-only with no design decisions).
