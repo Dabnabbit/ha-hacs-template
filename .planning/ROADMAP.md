@@ -13,7 +13,7 @@ Seven phases that transform a broken initial scaffold into a Copier-powered temp
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffold Fixes** - Fix all deprecated HA API usage so generated code loads cleanly on HA 2025.7+ (completed 2026-02-19)
-- [ ] **Phase 2: Copier Template Scaffolding** - Establish Copier render pipeline, Jinja2 escaping strategy, and conditional file mechanics
+- [x] **Phase 2: Copier Template Scaffolding** - Establish Copier render pipeline, Jinja2 escaping strategy, and conditional file mechanics (completed 2026-02-19)
 - [ ] **Phase 3: Backend Core** - Always-on integration patterns: API client, coordinator, config/options flow, sensor, device registry, metadata
 - [ ] **Phase 4: Frontend Card** - Single-file LitElement base card with editor, theme integration, loading/error states, and card registry
 - [ ] **Phase 5: Conditional Patterns** - Four Copier-conditional file sets: WebSocket, services, multi-coordinator, multi-step config flow
@@ -118,7 +118,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffold Fixes | 2/2 | Complete    | 2026-02-19 |
-| 2. Copier Template Scaffolding | 2/3 | Executing gap closure | - |
+| 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
 | 3. Backend Core | 0/TBD | Not started | - |
 | 4. Frontend Card | 0/TBD | Not started | - |
 | 5. Conditional Patterns | 0/TBD | Not started | - |
