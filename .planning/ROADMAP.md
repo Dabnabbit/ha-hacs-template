@@ -63,7 +63,11 @@ Plans:
   3. At least one sensor entity is visible under the device and updates from coordinator data
   4. Options flow allows changing host/port/API key after setup; entity history is preserved (no re-setup required)
   5. `manifest.json`, `hacs.json`, and `strings.json`/`translations/en.json` are present and complete; config flow step labels render in the HA UI
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 03-01-PLAN.md — Create ApiClient base class and wire into coordinator
+- [ ] 03-02-PLAN.md — Add device registry, PARALLEL_UPDATES to sensor; verify manifest/HACS metadata
+- [ ] 03-03-PLAN.md — Complete config/options flow with api_key, connection validation, and smoke test
 
 ### Phase 4: Frontend Card
 **Goal**: The generated Lovelace card is installable as a dashboard resource, appears in the card picker, renders with HA theme colors, and shows loading and error states correctly
@@ -119,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 |-------|----------------|--------|-----------|
 | 1. Scaffold Fixes | 2/2 | Complete    | 2026-02-19 |
 | 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
-| 3. Backend Core | 0/TBD | Not started | - |
+| 3. Backend Core | 0/3 | Not started | - |
 | 4. Frontend Card | 0/TBD | Not started | - |
 | 5. Conditional Patterns | 0/TBD | Not started | - |
 | 6. Test Scaffold | 0/TBD | Not started | - |
