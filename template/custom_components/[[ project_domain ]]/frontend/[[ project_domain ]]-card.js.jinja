@@ -1,5 +1,5 @@
 /**
- * HACS Template Card
+ * [[ project_name ]] Card
  *
  * A template Lovelace card for Home Assistant.
  * Replace this with your project-specific card implementation.
@@ -11,15 +11,15 @@ const LitElement = customElements.get("hui-masonry-view")
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
-const CARD_VERSION = "0.1.0";
+const CARD_VERSION = "[[ version ]]";
 
 console.info(
-  `%c HACS-TEMPLATE-CARD %c v${CARD_VERSION} `,
+  `%c [[ project_domain | upper | replace('_', '-') ]]-CARD %c v${CARD_VERSION} `,
   "color: orange; font-weight: bold; background: black",
   "color: white; font-weight: bold; background: dimgray"
 );
 
-class HacsTemplateCard extends LitElement {
+class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -28,12 +28,12 @@ class HacsTemplateCard extends LitElement {
   }
 
   static getConfigElement() {
-    return document.createElement("hacs-template-card-editor");
+    return document.createElement("[[ project_domain | replace('_', '-') ]]-card-editor");
   }
 
   static getStubConfig() {
     return {
-      header: "HACS Template",
+      header: "[[ project_name ]]",
       entity: "",
     };
   }
@@ -43,7 +43,7 @@ class HacsTemplateCard extends LitElement {
       throw new Error("Invalid configuration");
     }
     this.config = {
-      header: "HACS Template",
+      header: "[[ project_name ]]",
       ...config,
     };
   }
@@ -112,7 +112,7 @@ class HacsTemplateCard extends LitElement {
 /**
  * Card Editor
  */
-class HacsTemplateCardEditor extends LitElement {
+class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]CardEditor extends LitElement {
   static get properties() {
     return {
       hass: { type: Object },
@@ -178,13 +178,13 @@ class HacsTemplateCardEditor extends LitElement {
   }
 }
 
-customElements.define("hacs-template-card", HacsTemplateCard);
-customElements.define("hacs-template-card-editor", HacsTemplateCardEditor);
+customElements.define("[[ project_domain | replace('_', '-') ]]-card", [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card);
+customElements.define("[[ project_domain | replace('_', '-') ]]-card-editor", [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]CardEditor);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "hacs-template-card",
-  name: "HACS Template Card",
-  description: "A template card for HACS projects",
+  type: "[[ project_domain | replace('_', '-') ]]-card",
+  name: "[[ project_name ]] Card",
+  description: "[[ project_description ]]",
   preview: true,
 });

@@ -1,4 +1,4 @@
-"""Config flow for HACS Template integration."""
+"""Config flow for [[ project_name ]] integration."""
 
 from __future__ import annotations
 
@@ -44,7 +44,7 @@ async def _async_validate_connection(user_input: dict) -> None:
 
 
 class TemplateConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for HACS Template."""
+    """Handle a config flow for [[ project_name ]]."""
 
     VERSION = 1
 
@@ -91,7 +91,7 @@ class TemplateConfigFlow(ConfigFlow, domain=DOMAIN):
 
 
 class OptionsFlowHandler(OptionsFlow):
-    """Handle options flow for HACS Template."""
+    """Handle options flow for [[ project_name ]]."""
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
