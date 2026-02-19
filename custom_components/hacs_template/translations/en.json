@@ -18,5 +18,16 @@
     "abort": {
       "already_configured": "Service is already configured"
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Update Service Settings",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        }
+      }
+    }
   }
 }
