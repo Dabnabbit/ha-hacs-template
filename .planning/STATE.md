@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 2 complete — Phase 3 next (coordinator & sensor patterns)
+**Current focus:** Phase 3 in progress — 03-01 and 03-02 complete; 03-03 remaining
 
 ## Current Position
 
-Phase: 2 of 7 (Copier Template Scaffolding) — COMPLETE
-Plan: 3 of 3 in current phase (02-01, 02-02, 02-03 all complete)
-Status: Phase 2 fully complete — all 8 COPR requirements satisfied including COPR-05 gap closure. Ready for Phase 3.
-Last activity: 2026-02-19 — 02-03 gap closure executed; COPR-05 closed; Phase 2 complete
+Phase: 3 of 7 (Backend Core) — IN PROGRESS
+Plan: 2 of 3 in current phase (03-01, 03-02 complete; 03-03 remaining)
+Status: 03-02 complete — sensor device_info and PARALLEL_UPDATES added; manifest/hacs verified
+Last activity: 2026-02-19 — 03-02 executed; BACK-04, BACK-05, BACK-07, BACK-08, BACK-10 closed
 
-Progress: [█████░░░░░] ~33% (5/15 estimated total plans)
+Progress: [██████░░░░] ~40% (7/15 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5 (01-01, 01-02, 02-01, 02-02, 02-03)
-- Average duration: 2.6 min
-- Total execution time: 13 min
+- Total plans completed: 7 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02)
+- Average duration: ~2 min
+- Total execution time: ~14 min
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [█████░░░░░] ~33% (5/15 estimated total plans)
 |-------|-------|-------|----------|
 | 01-scaffold-fixes | 2 | 4 min | 2 min |
 | 02-copier-template-scaffolding | 3 | 9 min | 3 min |
+| 03-backend-core | 2 | ~2 min | ~1 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (~2 min), 01-02 (2 min), 02-01 (3 min), 02-02 (5 min), 02-03 (1 min)
+- Last 5 plans: 02-01 (3 min), 02-02 (5 min), 02-03 (1 min), 03-01 (~1 min), 03-02 (1 min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -57,6 +58,9 @@ Recent decisions affecting current work:
 - [Phase 02-copier-template-scaffolding]: _subdirectory: template separates copier.yml and repo docs from template content in template/ dir
 - [Phase 02]: Correct copier conditional filename pattern: [% if cond %]name.py[% endif %].jinja — entire base+extension inside [% if %] block so false renders to empty string and copier skips the file
 - [Phase 02]: Answers file template uses [[ _copier_conf.answers_file ]].jinja — _envops [[ ]] delimiters apply globally including filename rendering; {{ }} is not rendered with custom envops
+- [Phase 03-backend-core]: PARALLEL_UPDATES = 0 at module level for coordinator-based sensors (coordinator controls update frequency)
+- [Phase 03-backend-core]: DeviceInfo uses entry.title for name and [[ project_name ]] (Copier variable) for manufacturer in sensor template
+- [Phase 03-backend-core]: manifest.json.jinja and hacs.json.jinja verified correct from Phase 1/2 — no changes needed for BACK-07 and BACK-08
 
 ### Pending Todos
 
@@ -69,7 +73,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 02-03-PLAN.md (COPR-05 gap closure); Phase 2 fully complete
+Stopped at: Completed 03-02-PLAN.md (sensor device_info/PARALLEL_UPDATES; manifest/hacs verified)
 Resume file: None
 
 ### Phase 2 Execution Summary
