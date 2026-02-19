@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import logging
+from dataclasses import dataclass
 from pathlib import Path
 
+from homeassistant.components.http import StaticPathConfig
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
@@ -17,39 +19,46 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORMS: list[Platform] = [Platform.SENSOR]
 
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+@dataclass
+class HacsTemplateData:
+    """Data for the HACS Template integration."""
+
+    coordinator: TemplateCoordinator
+
+
+type HacsTemplateConfigEntry = ConfigEntry[HacsTemplateData]
+
+
+async def async_setup(hass: HomeAssistant, config: dict) -> bool:
+    """Set up the HACS Template integration."""
+    frontend_path = Path(__file__).parent / "frontend"
+    try:
+        await hass.http.async_register_static_paths(
+            [
+                StaticPathConfig(
+                    FRONTEND_SCRIPT_URL,
+                    str(frontend_path / f"{DOMAIN}-card.js"),
+                    cache_headers=True,
+                )
+            ]
+        )
+    except RuntimeError:
+        # Path already registered — happens on reload
+        pass
+    return True
+
+
+async def async_setup_entry(hass: HomeAssistant, entry: HacsTemplateConfigEntry) -> bool:
     """Set up HACS Template from a config entry."""
     coordinator = TemplateCoordinator(hass, entry)
     await coordinator.async_config_entry_first_refresh()
 
-    hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][entry.entry_id] = coordinator
-
-    # Register frontend card
-    await _async_register_frontend(hass)
+    entry.runtime_data = HacsTemplateData(coordinator=coordinator)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
 
 
-async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+async def async_unload_entry(hass: HomeAssistant, entry: HacsTemplateConfigEntry) -> bool:
     """Unload a config entry."""
-    if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
-        hass.data[DOMAIN].pop(entry.entry_id)
-    return unload_ok
-
-
-async def _async_register_frontend(hass: HomeAssistant) -> None:
-    """Register the frontend card resources."""
-    frontend_path = Path(__file__).parent / "frontend"
-
-    # Serve the card JS file
-    hass.http.register_static_path(
-        FRONTEND_SCRIPT_URL,
-        str(frontend_path / f"{DOMAIN}-card.js"),
-        cache_headers=True,
-    )
-
-    # Register as a Lovelace resource
-    # Users can also add manually: /hacsfiles/hacs_template/hacs_template-card.js
-    _LOGGER.debug("Registered frontend card at %s", FRONTEND_SCRIPT_URL)
+    return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
