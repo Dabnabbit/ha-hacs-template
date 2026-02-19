@@ -20,14 +20,14 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 
 ### Copier Template
 
-- [ ] **COPR-01**: `copier.yml` defines questions for project domain, name, author, description, IoT class, and conditional feature flags
-- [ ] **COPR-02**: Template uses Jinja2 variable substitution for domain name in all files (manifest, const, hacs.json, strings, card JS, etc.)
-- [ ] **COPR-03**: Template directory uses Copier Jinja2 naming (`custom_components/{{ project_domain }}/`) for domain directory
-- [ ] **COPR-04**: All Python template files use `{% raw %}...{% endraw %}` to prevent Jinja2/Python brace collision
+- [x] **COPR-01**: `copier.yml` defines questions for project domain, name, author, description, IoT class, and conditional feature flags
+- [x] **COPR-02**: Template uses Jinja2 variable substitution for domain name in all files (manifest, const, hacs.json, strings, card JS, etc.)
+- [x] **COPR-03**: Template directory uses Copier Jinja2 naming (`custom_components/{{ project_domain }}/`) for domain directory
+- [x] **COPR-04**: All Python template files use `{% raw %}...{% endraw %}` to prevent Jinja2/Python brace collision
 - [ ] **COPR-05**: Conditional files (websocket.py, services.py, coordinator_secondary.py, multi-step config_flow.py) are generated or excluded based on Copier question answers
 - [ ] **COPR-06**: `copier copy` generates a valid HA integration that passes `hassfest` without manual edits
 - [ ] **COPR-07**: `copier update` propagates template changes to existing child projects via 3-way merge
-- [ ] **COPR-08**: `.copier-answers.yml` is committed in generated projects with inline warning against manual edits
+- [x] **COPR-08**: `.copier-answers.yml` is committed in generated projects with inline warning against manual edits
 
 ### Backend Core
 
@@ -114,14 +114,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SCAF-06 | Phase 1 | Pending |
 | SCAF-07 | Phase 1 | Complete |
 | SCAF-08 | Phase 1 | Complete |
-| COPR-01 | Phase 2 | Pending |
-| COPR-02 | Phase 2 | Pending |
-| COPR-03 | Phase 2 | Pending |
-| COPR-04 | Phase 2 | Pending |
+| COPR-01 | Phase 2 | Complete |
+| COPR-02 | Phase 2 | Complete |
+| COPR-03 | Phase 2 | Complete |
+| COPR-04 | Phase 2 | Complete |
 | COPR-05 | Phase 2 | Pending |
 | COPR-06 | Phase 2 | Pending |
 | COPR-07 | Phase 2 | Pending |
-| COPR-08 | Phase 2 | Pending |
+| COPR-08 | Phase 2 | Complete |
 | BACK-01 | Phase 3 | Pending |
 | BACK-02 | Phase 3 | Pending |
 | BACK-03 | Phase 3 | Pending |

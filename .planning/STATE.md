@@ -5,32 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 1 - Scaffold Fixes
+**Current focus:** Phase 2 - Copier Template Scaffolding
 
 ## Current Position
 
-Phase: 1 of 7 (Scaffold Fixes)
-Plan: 2 of 2 in current phase (both 01-01 and 01-02 complete)
-Status: Phase 1 complete — ready to advance to Phase 2
-Last activity: 2026-02-19 — 01-01 and 01-02 both complete; integration core and config flow fixed for HA 2025.7+
+Phase: 2 of 7 (Copier Template Scaffolding)
+Plan: 1 of 2 in current phase (02-01 complete)
+Status: Phase 2 in progress — copier.yml + template/ restructuring done; smoke test (02-02) next
+Last activity: 2026-02-19 — 02-01 complete; repo is now a working Copier template with [[ ]] _envops delimiters
 
-Progress: [██░░░░░░░░] ~14% (2/14 estimated total plans)
+Progress: [███░░░░░░░] ~21% (3/14 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2 (01-01, 01-02)
-- Average duration: 2 min
-- Total execution time: 4 min
+- Total plans completed: 3 (01-01, 01-02, 02-01)
+- Average duration: 2.3 min
+- Total execution time: 7 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-scaffold-fixes | 2 | 4 min | 2 min |
+| 02-copier-template-scaffolding | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (~2 min), 01-02 (2 min)
+- Last 5 plans: 01-01 (~2 min), 01-02 (2 min), 02-01 (3 min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -52,6 +53,8 @@ Recent decisions affecting current work:
 - [01-02]: OptionsFlowHandler extends OptionsFlow base class directly — do NOT define __init__ or manually assign config_entry; HA base class injects it automatically
 - [01-02]: async_get_options_flow accepts config_entry parameter (required by HA calling convention) but does NOT pass it to OptionsFlowHandler() constructor
 - [01-02]: unique_id uses f'{host}:{port}' string to detect duplicate entries across config flow submissions
+- [Phase 02-copier-template-scaffolding]: _envops [[ ]] / [% %] delimiters over {% raw %} blocks — global fix eliminates Python brace collision in all template files
+- [Phase 02-copier-template-scaffolding]: _subdirectory: template separates copier.yml and repo docs from template content in template/ dir
 
 ### Pending Todos
 
@@ -64,7 +67,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Phase 1 complete — both plans 01-01 and 01-02 executed successfully
+Stopped at: Completed 02-01-PLAN.md (Copier template scaffolding)
 Resume file: None
 
 ### Phase 1 Planning Summary
