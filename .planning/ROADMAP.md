@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Scaffold Fixes** - Fix all deprecated HA API usage so generated code loads cleanly on HA 2025.7+ (completed 2026-02-19)
 - [x] **Phase 2: Copier Template Scaffolding** - Establish Copier render pipeline, Jinja2 escaping strategy, and conditional file mechanics (completed 2026-02-19)
-- [ ] **Phase 3: Backend Core** - Always-on integration patterns: API client, coordinator, config/options flow, sensor, device registry, metadata
+- [x] **Phase 3: Backend Core** - Always-on integration patterns: API client, coordinator, config/options flow, sensor, device registry, metadata (completed 2026-02-19)
 - [ ] **Phase 4: Frontend Card** - Single-file LitElement base card with editor, theme integration, loading/error states, and card registry
 - [ ] **Phase 5: Conditional Patterns** - Four Copier-conditional file sets: WebSocket, services, multi-coordinator, multi-step config flow
 - [ ] **Phase 6: Test Scaffold** - pytest infrastructure with HA fixtures, config flow tests, coordinator mocking, and conditional test files
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 |-------|----------------|--------|-----------|
 | 1. Scaffold Fixes | 2/2 | Complete    | 2026-02-19 |
 | 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
-| 3. Backend Core | 0/3 | Not started | - |
+| 3. Backend Core | 3/3 | Complete   | 2026-02-19 |
 | 4. Frontend Card | 0/TBD | Not started | - |
 | 5. Conditional Patterns | 0/TBD | Not started | - |
 | 6. Test Scaffold | 0/TBD | Not started | - |

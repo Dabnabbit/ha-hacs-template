@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 3 in progress — 03-01 and 03-02 complete; 03-03 remaining
+**Current focus:** Phase 3 COMPLETE — all 3 plans executed; Phase 4 (frontend card) next
 
 ## Current Position
 
-Phase: 3 of 7 (Backend Core) — IN PROGRESS
-Plan: 2 of 3 in current phase (03-01, 03-02 complete; 03-03 remaining)
-Status: 03-01 and 03-02 complete — ApiClient+coordinator wired (03-01); sensor device_info and PARALLEL_UPDATES (03-02)
-Last activity: 2026-02-19 — 03-01 executed (BACK-01/02/03); 03-02 executed (BACK-04/05/07/08/10)
+Phase: 3 of 7 (Backend Core) — COMPLETE
+Plan: 3 of 3 in current phase (03-01, 03-02, 03-03 all complete)
+Status: Phase 3 complete — ApiClient+coordinator (03-01); sensor device_info+PARALLEL_UPDATES (03-02); config flow+options flow+translations+smoke test (03-03)
+Last activity: 2026-02-19 — 03-03 executed (BACK-06, BACK-09)
 
-Progress: [██████░░░░] ~40% (7/15 estimated total plans)
+Progress: [███████░░░] ~53% (8/15 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02)
+- Total plans completed: 8 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03)
 - Average duration: ~2 min
-- Total execution time: ~14 min
+- Total execution time: ~17 min
 
 **By Phase:**
 
@@ -29,13 +29,14 @@ Progress: [██████░░░░] ~40% (7/15 estimated total plans)
 |-------|-------|-------|----------|
 | 01-scaffold-fixes | 2 | 4 min | 2 min |
 | 02-copier-template-scaffolding | 3 | 9 min | 3 min |
-| 03-backend-core | 2 | ~2 min | ~1 min |
+| 03-backend-core | 3 | ~5 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-01 (3 min), 02-02 (5 min), 02-03 (1 min), 03-01 (~1 min), 03-02 (1 min)
+- Last 5 plans: 02-03 (1 min), 03-01 (~1 min), 03-02 (1 min), 03-03 (3 min)
 - Trend: Consistent
 
 *Updated after each plan completion*
+| Phase 03-backend-core P03 | 3 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -64,6 +65,8 @@ Recent decisions affecting current work:
 - [Phase 03-backend-core]: PARALLEL_UPDATES = 0 at module level for coordinator-based sensors (coordinator controls update frequency)
 - [Phase 03-backend-core]: DeviceInfo uses entry.title for name and [[ project_name ]] (Copier variable) for manufacturer in sensor template
 - [Phase 03-backend-core]: manifest.json.jinja and hacs.json.jinja verified correct from Phase 1/2 — no changes needed for BACK-07 and BACK-08
+- [Phase 03-03]: Options flow stores reconfigured values in entry.data via async_update_entry so coordinator re-reads on reload (not entry.options)
+- [Phase 03-03]: Git tag 0.1.0 must be advanced to HEAD after each phase that adds new .jinja template files — copier uses tagged version for file list
 
 ### Pending Todos
 
@@ -76,12 +79,13 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 03-01-PLAN.md (ApiClient + coordinator wired; BACK-01/02/03 satisfied)
+Stopped at: Completed 03-03-PLAN.md (config flow + options flow + translations + smoke test; BACK-06/09 satisfied)
 Resume file: None
 
-### Phase 3 Execution Summary (in progress)
+### Phase 3 Execution Summary (COMPLETE)
 - **Plan 03-01 (Wave 1):** Created api.py.jinja with ApiClient class (CannotConnectError, InvalidAuthError, Bearer auth, timeout, _request, async_test_connection, async_get_data). Cleaned const.py.jinja of CONF_* shadowing; added DEFAULT_TIMEOUT=30. Wired coordinator.py.jinja to ApiClient. 2 commits.
 - **Plan 03-02 (Wave 1):** Added device_info and PARALLEL_UPDATES to sensor.py.jinja. Verified manifest.json.jinja and hacs.json.jinja. 1 commit.
+- **Plan 03-03 (Wave 2):** Updated config_flow.py.jinja with CONF_API_KEY, real ApiClient validation, options flow writing to entry.data. Added api_key labels to strings.json.jinja and translations/en.json.jinja. Copier smoke test passed all 9 file checks. 2 commits.
 
 ### Phase 2 Execution Summary
 - **Plan 02-01 (Wave 1):** Created copier.yml with _envops custom delimiters, restructured all files into template/ with .jinja suffixes and [[ ]] variable substitutions. 3 commits.

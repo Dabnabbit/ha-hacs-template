@@ -36,10 +36,10 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 - [x] **BACK-03**: Typed `ConfigEntry` generic defined as `type MyConfigEntry = ConfigEntry[MyData]` with dataclass `runtime_data`
 - [x] **BACK-04**: Sensor platform with `CoordinatorEntity` base, `_attr_has_entity_name = True`, `_attr_unique_id`, and example sensor
 - [x] **BACK-05**: Device registry integration with `DeviceEntryType.SERVICE` on every entity via `device_info` property
-- [ ] **BACK-06**: Options flow for reconfiguring host/port/API key after initial setup without removing integration
+- [x] **BACK-06**: Options flow for reconfiguring host/port/API key after initial setup without removing integration
 - [x] **BACK-07**: `manifest.json` with all required fields, `homeassistant: "2025.7.0"`, `dependencies: ["frontend"]`, `integration_type: "service"`
 - [x] **BACK-08**: `hacs.json` with correct `name` and `homeassistant` minimum version
-- [ ] **BACK-09**: `strings.json` and `translations/en.json` covering config flow, options flow, and error messages
+- [x] **BACK-09**: `strings.json` and `translations/en.json` covering config flow, options flow, and error messages
 - [x] **BACK-10**: `parallel_updates = 0` set on all platform files (sensor.py and any conditional platforms)
 
 ### Frontend Card
@@ -127,10 +127,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BACK-03 | Phase 3 | Complete |
 | BACK-04 | Phase 3 | Complete |
 | BACK-05 | Phase 3 | Complete |
-| BACK-06 | Phase 3 | Pending |
+| BACK-06 | Phase 3 | Complete |
 | BACK-07 | Phase 3 | Complete |
 | BACK-08 | Phase 3 | Complete |
-| BACK-09 | Phase 3 | Pending |
+| BACK-09 | Phase 3 | Complete |
 | BACK-10 | Phase 3 | Complete |
 | CARD-01 | Phase 4 | Pending |
 | CARD-02 | Phase 4 | Pending |
