@@ -115,3 +115,16 @@ None - no external service configuration required.
 - Integration core is fully corrected for HA 2025.7+ compatibility
 - Plan 01-02 (config flow fixes) is independent (disjoint file set) and can run in parallel or sequentially
 - Phase 2 (Copier template) can reference these corrected patterns for all generated files
+
+## Self-Check: PASSED
+
+All files verified present and all commits verified in git history:
+- `custom_components/hacs_template/__init__.py` — FOUND
+- `custom_components/hacs_template/coordinator.py` — FOUND
+- `custom_components/hacs_template/sensor.py` — FOUND
+- `custom_components/hacs_template/const.py` — FOUND
+- `hacs.json` — FOUND
+- `.planning/phases/01-scaffold-fixes/01-01-SUMMARY.md` — FOUND
+- Commit `e91ace6` (Task 1) — FOUND
+- Commit `fd7077f` (Task 2) — FOUND
+- Commit `90916b5` (metadata) — FOUND
