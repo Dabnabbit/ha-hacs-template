@@ -32,7 +32,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Config flow prevents duplicate entries (setting up the same host twice aborts with an existing-entry error)
   4. Config entry data is accessible via `entry.runtime_data` with a typed dataclass (no `hass.data[DOMAIN]` usage)
   5. Options flow opens and saves without errors on HA 2025.12+ (uses `OptionsFlow` base class, no `__init__` assignment)
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 01-01-PLAN.md — Fix integration core: static path registration, runtime_data, HTTP session, version metadata
+- [ ] 01-02-PLAN.md — Fix config flow: unique_id, connection validation, options flow
 
 ### Phase 2: Copier Template Scaffolding
 **Goal**: `copier copy` and `copier update` work end-to-end; all Python template files are correctly escaped; first smoke-tested child project renders without errors
@@ -110,7 +113,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffold Fixes | 0/TBD | Not started | - |
+| 1. Scaffold Fixes | 0/2 | Planned | - |
 | 2. Copier Template Scaffolding | 0/TBD | Not started | - |
 | 3. Backend Core | 0/TBD | Not started | - |
 | 4. Frontend Card | 0/TBD | Not started | - |
