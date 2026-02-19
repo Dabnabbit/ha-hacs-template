@@ -24,9 +24,9 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 - [x] **COPR-02**: Template uses Jinja2 variable substitution for domain name in all files (manifest, const, hacs.json, strings, card JS, etc.)
 - [x] **COPR-03**: Template directory uses Copier Jinja2 naming (`custom_components/{{ project_domain }}/`) for domain directory
 - [x] **COPR-04**: All Python template files use `{% raw %}...{% endraw %}` to prevent Jinja2/Python brace collision
-- [ ] **COPR-05**: Conditional files (websocket.py, services.py, coordinator_secondary.py, multi-step config_flow.py) are generated or excluded based on Copier question answers
-- [ ] **COPR-06**: `copier copy` generates a valid HA integration that passes `hassfest` without manual edits
-- [ ] **COPR-07**: `copier update` propagates template changes to existing child projects via 3-way merge
+- [x] **COPR-05**: Conditional files (websocket.py, services.py, coordinator_secondary.py, multi-step config_flow.py) are generated or excluded based on Copier question answers
+- [x] **COPR-06**: `copier copy` generates a valid HA integration that passes `hassfest` without manual edits
+- [x] **COPR-07**: `copier update` propagates template changes to existing child projects via 3-way merge
 - [x] **COPR-08**: `.copier-answers.yml` is committed in generated projects with inline warning against manual edits
 
 ### Backend Core
@@ -118,9 +118,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COPR-02 | Phase 2 | Complete |
 | COPR-03 | Phase 2 | Complete |
 | COPR-04 | Phase 2 | Complete |
-| COPR-05 | Phase 2 | Pending |
-| COPR-06 | Phase 2 | Pending |
-| COPR-07 | Phase 2 | Pending |
+| COPR-05 | Phase 2 | Complete |
+| COPR-06 | Phase 2 | Complete |
+| COPR-07 | Phase 2 | Complete |
 | COPR-08 | Phase 2 | Complete |
 | BACK-01 | Phase 3 | Pending |
 | BACK-02 | Phase 3 | Pending |

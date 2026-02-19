@@ -9,12 +9,12 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 
 ## Current Position
 
-Phase: 2 of 7 (Copier Template Scaffolding)
-Plan: 1 of 2 in current phase (02-01 complete)
-Status: Phase 2 in progress — copier.yml + template/ restructuring done; smoke test (02-02) next
-Last activity: 2026-02-19 — 02-01 complete; repo is now a working Copier template with [[ ]] _envops delimiters
+Phase: 2 of 7 (Copier Template Scaffolding) — COMPLETE
+Plan: 2 of 2 in current phase (02-01, 02-02 complete)
+Status: Phase 2 complete — copier pipeline verified, conditional files proven, copier update working; Phase 3 (GitHub Actions CI) next
+Last activity: 2026-02-19 — 02-02 complete; full copier copy/update pipeline verified with correct conditional file pattern
 
-Progress: [███░░░░░░░] ~21% (3/14 estimated total plans)
+Progress: [████░░░░░░] ~29% (4/14 estimated total plans)
 
 ## Performance Metrics
 
@@ -28,10 +28,10 @@ Progress: [███░░░░░░░] ~21% (3/14 estimated total plans)
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-scaffold-fixes | 2 | 4 min | 2 min |
-| 02-copier-template-scaffolding | 1 | 3 min | 3 min |
+| 02-copier-template-scaffolding | 2 | 8 min | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (~2 min), 01-02 (2 min), 02-01 (3 min)
+- Last 5 plans: 01-01 (~2 min), 01-02 (2 min), 02-01 (3 min), 02-02 (5 min)
 - Trend: Consistent
 
 *Updated after each plan completion*
@@ -55,6 +55,8 @@ Recent decisions affecting current work:
 - [01-02]: unique_id uses f'{host}:{port}' string to detect duplicate entries across config flow submissions
 - [Phase 02-copier-template-scaffolding]: _envops [[ ]] / [% %] delimiters over {% raw %} blocks — global fix eliminates Python brace collision in all template files
 - [Phase 02-copier-template-scaffolding]: _subdirectory: template separates copier.yml and repo docs from template content in template/ dir
+- [Phase 02]: Correct copier conditional filename pattern: [% if cond %]name.py[% endif %].jinja — entire base+extension inside [% if %] block so false renders to empty string and copier skips the file
+- [Phase 02]: Answers file template uses [[ _copier_conf.answers_file ]].jinja — _envops [[ ]] delimiters apply globally including filename rendering; {{ }} is not rendered with custom envops
 
 ### Pending Todos
 
@@ -67,7 +69,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 02-01-PLAN.md (Copier template scaffolding)
+Stopped at: Completed 02-02-PLAN.md (Copier smoke test — pipeline verified, conditional files, copier update)
 Resume file: None
 
 ### Phase 1 Planning Summary
