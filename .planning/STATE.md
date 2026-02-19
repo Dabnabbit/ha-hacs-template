@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 1 of 7 (Scaffold Fixes)
-Plan: 0 of 2 in current phase
-Status: Planned — ready to execute
-Last activity: 2026-02-19 — Phase 1 planned: 2 plans in 1 wave, verification passed
+Plan: 2 of 2 in current phase (01-02 complete; check 01-01 for its own state)
+Status: Executing — 01-02 complete
+Last activity: 2026-02-19 — 01-02 complete: config flow unique_id, validation, OptionsFlowHandler, options strings
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] ~7% (1/14 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: 0 hours
+- Total plans completed: 1 (01-02; 01-01 tracked separately)
+- Average duration: 2 min
+- Total execution time: 2 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-scaffold-fixes | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-02 (2 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -45,6 +45,9 @@ Recent decisions affecting current work:
 - [Pre-roadmap]: All three child projects share the same 5 breaking defects — Phase 1 is correctness-only, no new features
 - [Pre-roadmap]: Copier Jinja2/Python brace collision must be resolved before any .jinja Python files are written (Phase 2 prerequisite for all later phases)
 - [Pre-roadmap]: Static path registration goes in `async_setup` (not `async_setup_entry`) to prevent duplicate registration on second config entry
+- [01-02]: OptionsFlowHandler extends OptionsFlow base class directly — do NOT define __init__ or manually assign config_entry; HA base class injects it automatically
+- [01-02]: async_get_options_flow accepts config_entry parameter (required by HA calling convention) but does NOT pass it to OptionsFlowHandler() constructor
+- [01-02]: unique_id uses f'{host}:{port}' string to detect duplicate entries across config flow submissions
 
 ### Pending Todos
 
@@ -58,7 +61,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Phase 1 planned and verified — ready to run /gsd:execute-phase 1
+Stopped at: Completed 01-02-PLAN.md — config flow fixed (unique_id, validation, OptionsFlowHandler, options strings)
 Resume file: None
 
 ### Phase 1 Planning Summary
