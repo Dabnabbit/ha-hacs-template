@@ -106,61 +106,61 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCAF-01 | — | Pending |
-| SCAF-02 | — | Pending |
-| SCAF-03 | — | Pending |
-| SCAF-04 | — | Pending |
-| SCAF-05 | — | Pending |
-| SCAF-06 | — | Pending |
-| SCAF-07 | — | Pending |
-| SCAF-08 | — | Pending |
-| COPR-01 | — | Pending |
-| COPR-02 | — | Pending |
-| COPR-03 | — | Pending |
-| COPR-04 | — | Pending |
-| COPR-05 | — | Pending |
-| COPR-06 | — | Pending |
-| COPR-07 | — | Pending |
-| COPR-08 | — | Pending |
-| BACK-01 | — | Pending |
-| BACK-02 | — | Pending |
-| BACK-03 | — | Pending |
-| BACK-04 | — | Pending |
-| BACK-05 | — | Pending |
-| BACK-06 | — | Pending |
-| BACK-07 | — | Pending |
-| BACK-08 | — | Pending |
-| BACK-09 | — | Pending |
-| BACK-10 | — | Pending |
-| CARD-01 | — | Pending |
-| CARD-02 | — | Pending |
-| CARD-03 | — | Pending |
-| CARD-04 | — | Pending |
-| CARD-05 | — | Pending |
-| CARD-06 | — | Pending |
-| CARD-07 | — | Pending |
-| CARD-08 | — | Pending |
-| COND-01 | — | Pending |
-| COND-02 | — | Pending |
-| COND-03 | — | Pending |
-| COND-04 | — | Pending |
-| COND-05 | — | Pending |
-| COND-06 | — | Pending |
-| TEST-01 | — | Pending |
-| TEST-02 | — | Pending |
-| TEST-03 | — | Pending |
-| TEST-04 | — | Pending |
-| TEST-05 | — | Pending |
-| CICD-01 | — | Pending |
-| CICD-02 | — | Pending |
-| CICD-03 | — | Pending |
-| CICD-04 | — | Pending |
+| SCAF-01 | Phase 1 | Pending |
+| SCAF-02 | Phase 1 | Pending |
+| SCAF-03 | Phase 1 | Pending |
+| SCAF-04 | Phase 1 | Pending |
+| SCAF-05 | Phase 1 | Pending |
+| SCAF-06 | Phase 1 | Pending |
+| SCAF-07 | Phase 1 | Pending |
+| SCAF-08 | Phase 1 | Pending |
+| COPR-01 | Phase 2 | Pending |
+| COPR-02 | Phase 2 | Pending |
+| COPR-03 | Phase 2 | Pending |
+| COPR-04 | Phase 2 | Pending |
+| COPR-05 | Phase 2 | Pending |
+| COPR-06 | Phase 2 | Pending |
+| COPR-07 | Phase 2 | Pending |
+| COPR-08 | Phase 2 | Pending |
+| BACK-01 | Phase 3 | Pending |
+| BACK-02 | Phase 3 | Pending |
+| BACK-03 | Phase 3 | Pending |
+| BACK-04 | Phase 3 | Pending |
+| BACK-05 | Phase 3 | Pending |
+| BACK-06 | Phase 3 | Pending |
+| BACK-07 | Phase 3 | Pending |
+| BACK-08 | Phase 3 | Pending |
+| BACK-09 | Phase 3 | Pending |
+| BACK-10 | Phase 3 | Pending |
+| CARD-01 | Phase 4 | Pending |
+| CARD-02 | Phase 4 | Pending |
+| CARD-03 | Phase 4 | Pending |
+| CARD-04 | Phase 4 | Pending |
+| CARD-05 | Phase 4 | Pending |
+| CARD-06 | Phase 4 | Pending |
+| CARD-07 | Phase 4 | Pending |
+| CARD-08 | Phase 4 | Pending |
+| COND-01 | Phase 5 | Pending |
+| COND-02 | Phase 5 | Pending |
+| COND-03 | Phase 5 | Pending |
+| COND-04 | Phase 5 | Pending |
+| COND-05 | Phase 5 | Pending |
+| COND-06 | Phase 5 | Pending |
+| TEST-01 | Phase 6 | Pending |
+| TEST-02 | Phase 6 | Pending |
+| TEST-03 | Phase 6 | Pending |
+| TEST-04 | Phase 6 | Pending |
+| TEST-05 | Phase 6 | Pending |
+| CICD-01 | Phase 7 | Pending |
+| CICD-02 | Phase 7 | Pending |
+| CICD-03 | Phase 7 | Pending |
+| CICD-04 | Phase 7 | Pending |
 
 **Coverage:**
-- v1 requirements: 45 total
-- Mapped to phases: 0
-- Unmapped: 45
+- v1 requirements: 49 total
+- Mapped to phases: 49
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-19*
-*Last updated: 2026-02-19 after initial definition*
+*Last updated: 2026-02-19 — traceability filled after roadmap creation*
