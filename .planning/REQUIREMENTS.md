@@ -31,9 +31,9 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 
 ### Backend Core
 
-- [ ] **BACK-01**: Generic `ApiClient` base class with configurable auth (header/body/query), timeout, and error handling
-- [ ] **BACK-02**: `DataUpdateCoordinator` subclass using API client from `runtime_data`, with configurable `update_interval`
-- [ ] **BACK-03**: Typed `ConfigEntry` generic defined as `type MyConfigEntry = ConfigEntry[MyData]` with dataclass `runtime_data`
+- [x] **BACK-01**: Generic `ApiClient` base class with configurable auth (header/body/query), timeout, and error handling
+- [x] **BACK-02**: `DataUpdateCoordinator` subclass using API client from `runtime_data`, with configurable `update_interval`
+- [x] **BACK-03**: Typed `ConfigEntry` generic defined as `type MyConfigEntry = ConfigEntry[MyData]` with dataclass `runtime_data`
 - [x] **BACK-04**: Sensor platform with `CoordinatorEntity` base, `_attr_has_entity_name = True`, `_attr_unique_id`, and example sensor
 - [x] **BACK-05**: Device registry integration with `DeviceEntryType.SERVICE` on every entity via `device_info` property
 - [ ] **BACK-06**: Options flow for reconfiguring host/port/API key after initial setup without removing integration
@@ -122,9 +122,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COPR-06 | Phase 2 | Complete |
 | COPR-07 | Phase 2 | Complete |
 | COPR-08 | Phase 2 | Complete |
-| BACK-01 | Phase 3 | Pending |
-| BACK-02 | Phase 3 | Pending |
-| BACK-03 | Phase 3 | Pending |
+| BACK-01 | Phase 3 | Complete |
+| BACK-02 | Phase 3 | Complete |
+| BACK-03 | Phase 3 | Complete |
 | BACK-04 | Phase 3 | Complete |
 | BACK-05 | Phase 3 | Complete |
 | BACK-06 | Phase 3 | Pending |

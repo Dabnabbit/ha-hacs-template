@@ -11,8 +11,8 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 
 Phase: 3 of 7 (Backend Core) — IN PROGRESS
 Plan: 2 of 3 in current phase (03-01, 03-02 complete; 03-03 remaining)
-Status: 03-02 complete — sensor device_info and PARALLEL_UPDATES added; manifest/hacs verified
-Last activity: 2026-02-19 — 03-02 executed; BACK-04, BACK-05, BACK-07, BACK-08, BACK-10 closed
+Status: 03-01 and 03-02 complete — ApiClient+coordinator wired (03-01); sensor device_info and PARALLEL_UPDATES (03-02)
+Last activity: 2026-02-19 — 03-01 executed (BACK-01/02/03); 03-02 executed (BACK-04/05/07/08/10)
 
 Progress: [██████░░░░] ~40% (7/15 estimated total plans)
 
@@ -58,6 +58,9 @@ Recent decisions affecting current work:
 - [Phase 02-copier-template-scaffolding]: _subdirectory: template separates copier.yml and repo docs from template content in template/ dir
 - [Phase 02]: Correct copier conditional filename pattern: [% if cond %]name.py[% endif %].jinja — entire base+extension inside [% if %] block so false renders to empty string and copier skips the file
 - [Phase 02]: Answers file template uses [[ _copier_conf.answers_file ]].jinja — _envops [[ ]] delimiters apply globally including filename rendering; {{ }} is not rendered with custom envops
+- [03-01]: CONF_HOST/CONF_PORT/CONF_API_KEY imported from homeassistant.const only — local shadows removed from const.py to eliminate import confusion (Research Pitfall 1)
+- [03-01]: ApiClient._get_auth_headers() is overridable — supports Bearer token default, allows query-param or body auth override without subclassing _request()
+- [03-01]: CannotConnectError covers connection, client, and timeout errors — single exception type simplifies coordinator error handling
 - [Phase 03-backend-core]: PARALLEL_UPDATES = 0 at module level for coordinator-based sensors (coordinator controls update frequency)
 - [Phase 03-backend-core]: DeviceInfo uses entry.title for name and [[ project_name ]] (Copier variable) for manufacturer in sensor template
 - [Phase 03-backend-core]: manifest.json.jinja and hacs.json.jinja verified correct from Phase 1/2 — no changes needed for BACK-07 and BACK-08
@@ -73,8 +76,12 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 03-02-PLAN.md (sensor device_info/PARALLEL_UPDATES; manifest/hacs verified)
+Stopped at: Completed 03-01-PLAN.md (ApiClient + coordinator wired; BACK-01/02/03 satisfied)
 Resume file: None
+
+### Phase 3 Execution Summary (in progress)
+- **Plan 03-01 (Wave 1):** Created api.py.jinja with ApiClient class (CannotConnectError, InvalidAuthError, Bearer auth, timeout, _request, async_test_connection, async_get_data). Cleaned const.py.jinja of CONF_* shadowing; added DEFAULT_TIMEOUT=30. Wired coordinator.py.jinja to ApiClient. 2 commits.
+- **Plan 03-02 (Wave 1):** Added device_info and PARALLEL_UPDATES to sensor.py.jinja. Verified manifest.json.jinja and hacs.json.jinja. 1 commit.
 
 ### Phase 2 Execution Summary
 - **Plan 02-01 (Wave 1):** Created copier.yml with _envops custom delimiters, restructured all files into template/ with .jinja suffixes and [[ ]] variable substitutions. 3 commits.
