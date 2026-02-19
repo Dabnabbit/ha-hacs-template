@@ -12,7 +12,7 @@ Seven phases that transform a broken initial scaffold into a Copier-powered temp
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Scaffold Fixes** - Fix all deprecated HA API usage so generated code loads cleanly on HA 2025.7+
+- [x] **Phase 1: Scaffold Fixes** - Fix all deprecated HA API usage so generated code loads cleanly on HA 2025.7+ (completed 2026-02-19)
 - [ ] **Phase 2: Copier Template Scaffolding** - Establish Copier render pipeline, Jinja2 escaping strategy, and conditional file mechanics
 - [ ] **Phase 3: Backend Core** - Always-on integration patterns: API client, coordinator, config/options flow, sensor, device registry, metadata
 - [ ] **Phase 4: Frontend Card** - Single-file LitElement base card with editor, theme integration, loading/error states, and card registry
@@ -34,7 +34,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. Options flow opens and saves without errors on HA 2025.12+ (uses `OptionsFlow` base class, no `__init__` assignment)
 **Plans**: 2 plans
 Plans:
-- [ ] 01-01-PLAN.md — Fix integration core: static path registration, runtime_data, HTTP session, version metadata
+- [x] 01-01-PLAN.md — Fix integration core: static path registration, runtime_data, HTTP session, version metadata
 - [x] 01-02-PLAN.md — Fix config flow: unique_id, connection validation, options flow
 
 ### Phase 2: Copier Template Scaffolding
@@ -113,7 +113,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Scaffold Fixes | 1/2 | Executing (01-01 pending) | - |
+| 1. Scaffold Fixes | 2/2 | Complete   | 2026-02-19 |
 | 2. Copier Template Scaffolding | 0/TBD | Not started | - |
 | 3. Backend Core | 0/TBD | Not started | - |
 | 4. Frontend Card | 0/TBD | Not started | - |

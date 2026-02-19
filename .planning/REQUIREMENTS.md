@@ -9,14 +9,14 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 
 ### Scaffold Fixes
 
-- [ ] **SCAF-01**: Generated integration uses `async_register_static_paths` with `StaticPathConfig` for frontend JS registration
-- [ ] **SCAF-02**: Generated integration uses `async_get_clientsession(hass)` for all HTTP requests (no raw `aiohttp.ClientSession`)
+- [x] **SCAF-01**: Generated integration uses `async_register_static_paths` with `StaticPathConfig` for frontend JS registration
+- [x] **SCAF-02**: Generated integration uses `async_get_clientsession(hass)` for all HTTP requests (no raw `aiohttp.ClientSession`)
 - [ ] **SCAF-03**: Config flow calls `async_set_unique_id` and `_abort_if_unique_id_configured` to prevent duplicate entries
-- [ ] **SCAF-04**: Generated integration stores coordinator in `ConfigEntry.runtime_data` with typed generic dataclass (not `hass.data[DOMAIN]`)
+- [x] **SCAF-04**: Generated integration stores coordinator in `ConfigEntry.runtime_data` with typed generic dataclass (not `hass.data[DOMAIN]`)
 - [ ] **SCAF-05**: Config flow includes connection validation stub that raises `CannotConnect` and `InvalidAuth`
 - [ ] **SCAF-06**: Options flow uses `OptionsFlow` base class (not `self.config_entry = config_entry` in `__init__`)
-- [ ] **SCAF-07**: Static path registration is in domain-level setup (not per-entry) to prevent duplicate registration errors
-- [ ] **SCAF-08**: `async_unload_entry` properly cleans up via `async_unload_platforms` (no manual `hass.data` cleanup needed with `runtime_data`)
+- [x] **SCAF-07**: Static path registration is in domain-level setup (not per-entry) to prevent duplicate registration errors
+- [x] **SCAF-08**: `async_unload_entry` properly cleans up via `async_unload_platforms` (no manual `hass.data` cleanup needed with `runtime_data`)
 
 ### Copier Template
 
@@ -106,14 +106,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCAF-01 | Phase 1 | Pending |
-| SCAF-02 | Phase 1 | Pending |
+| SCAF-01 | Phase 1 | Complete |
+| SCAF-02 | Phase 1 | Complete |
 | SCAF-03 | Phase 1 | Pending |
-| SCAF-04 | Phase 1 | Pending |
+| SCAF-04 | Phase 1 | Complete |
 | SCAF-05 | Phase 1 | Pending |
 | SCAF-06 | Phase 1 | Pending |
-| SCAF-07 | Phase 1 | Pending |
-| SCAF-08 | Phase 1 | Pending |
+| SCAF-07 | Phase 1 | Complete |
+| SCAF-08 | Phase 1 | Complete |
 | COPR-01 | Phase 2 | Pending |
 | COPR-02 | Phase 2 | Pending |
 | COPR-03 | Phase 2 | Pending |

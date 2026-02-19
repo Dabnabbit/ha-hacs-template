@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-19)
 ## Current Position
 
 Phase: 1 of 7 (Scaffold Fixes)
-Plan: 2 of 2 in current phase (01-02 complete; check 01-01 for its own state)
-Status: Executing — 01-02 complete
-Last activity: 2026-02-19 — 01-02 complete: config flow unique_id, validation, OptionsFlowHandler, options strings
+Plan: 2 of 2 in current phase (both 01-01 and 01-02 complete)
+Status: Phase 1 complete — ready to advance to Phase 2
+Last activity: 2026-02-19 — 01-01 and 01-02 both complete; integration core and config flow fixed for HA 2025.7+
 
-Progress: [█░░░░░░░░░] ~7% (1/14 estimated total plans)
+Progress: [██░░░░░░░░] ~14% (2/14 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1 (01-02; 01-01 tracked separately)
+- Total plans completed: 2 (01-01, 01-02)
 - Average duration: 2 min
-- Total execution time: 2 min
+- Total execution time: 4 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-scaffold-fixes | 1 | 2 min | 2 min |
+| 01-scaffold-fixes | 2 | 4 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (2 min)
-- Trend: —
+- Last 5 plans: 01-01 (~2 min), 01-02 (2 min)
+- Trend: Consistent
 
 *Updated after each plan completion*
 
@@ -45,6 +45,10 @@ Recent decisions affecting current work:
 - [Pre-roadmap]: All three child projects share the same 5 breaking defects — Phase 1 is correctness-only, no new features
 - [Pre-roadmap]: Copier Jinja2/Python brace collision must be resolved before any .jinja Python files are written (Phase 2 prerequisite for all later phases)
 - [Pre-roadmap]: Static path registration goes in `async_setup` (not `async_setup_entry`) to prevent duplicate registration on second config entry
+- [01-01]: entry.runtime_data over hass.data[DOMAIN] — HA-recommended pattern, auto-cleaned on unload
+- [01-01]: async_get_clientsession(hass) over raw aiohttp.ClientSession — HA manages HTTP session lifecycle
+- [01-01]: Frontend URL uses /{DOMAIN}/ prefix; /hacsfiles/ is HACS-owned namespace for downloaded cards
+- [01-01]: hacs.json homeassistant 2025.7.0 — minimum required for async_register_static_paths API
 - [01-02]: OptionsFlowHandler extends OptionsFlow base class directly — do NOT define __init__ or manually assign config_entry; HA base class injects it automatically
 - [01-02]: async_get_options_flow accepts config_entry parameter (required by HA calling convention) but does NOT pass it to OptionsFlowHandler() constructor
 - [01-02]: unique_id uses f'{host}:{port}' string to detect duplicate entries across config flow submissions
@@ -56,12 +60,11 @@ None yet.
 ### Blockers/Concerns
 
 - [Phase 4]: LitElement version (Lit 2.x vs 3.x) in HA 2025.7 needs confirmation at smoke-test time — extraction pattern works regardless but API differences may surface
-- [Phase 1]: RESOLVED — Research confirmed: use `/{DOMAIN}/` prefix (not `/hacsfiles/`). `/hacsfiles/` is HACS-owned namespace for cards HACS downloads. Plan 01-01 updates const.py accordingly.
 
 ## Session Continuity
 
 Last session: 2026-02-19
-Stopped at: Completed 01-02-PLAN.md — config flow fixed (unique_id, validation, OptionsFlowHandler, options strings)
+Stopped at: Phase 1 complete — both plans 01-01 and 01-02 executed successfully
 Resume file: None
 
 ### Phase 1 Planning Summary
