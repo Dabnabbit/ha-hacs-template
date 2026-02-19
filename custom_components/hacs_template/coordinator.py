@@ -8,6 +8,7 @@ from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import DEFAULT_SCAN_INTERVAL, DOMAIN
@@ -29,10 +30,12 @@ class TemplateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             update_interval=timedelta(seconds=DEFAULT_SCAN_INTERVAL),
         )
         self.config_entry = entry
-        # TODO: Initialize your API client here
+        session = async_get_clientsession(hass)
+        # TODO: Initialize your API client here using the managed session
         # self.client = MyApiClient(
         #     host=entry.data[CONF_HOST],
         #     port=entry.data[CONF_PORT],
+        #     session=session,
         # )
 
     async def _async_update_data(self) -> dict[str, Any]:

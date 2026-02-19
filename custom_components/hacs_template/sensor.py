@@ -8,17 +8,17 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
+from . import HacsTemplateConfigEntry
 from .coordinator import TemplateCoordinator
 
 
 async def async_setup_entry(
     hass: HomeAssistant,
-    entry: ConfigEntry,
+    entry: HacsTemplateConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up sensor entities."""
-    coordinator: TemplateCoordinator = hass.data[DOMAIN][entry.entry_id]
+    coordinator = entry.runtime_data.coordinator
 
     # TODO: Create sensor entities based on your data
     entities: list[TemplateSensor] = [
