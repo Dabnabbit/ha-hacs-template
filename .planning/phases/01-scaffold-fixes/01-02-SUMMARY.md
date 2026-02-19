@@ -72,7 +72,7 @@ Each task was committed atomically:
 1. **Task 1: Rewrite config_flow.py — unique_id, validation, and options flow** - `d6419c4` (feat)
 2. **Task 2: Add options flow strings to strings.json and translations/en.json** - `e0e2c23` (feat)
 
-**Plan metadata:** _(to be committed with SUMMARY.md)_
+**Plan metadata:** `33ae8d5` (docs: complete config flow fixes plan)
 
 ## Files Created/Modified
 - `custom_components/hacs_template/config_flow.py` - Rewrote with unique_id, active validation, OptionsFlowHandler, and async_get_options_flow
