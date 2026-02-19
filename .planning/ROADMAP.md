@@ -47,7 +47,10 @@ Plans:
   3. `copier update` in a child project applies a template change via 3-way merge without overwriting custom edits
   4. Generated project passes `hassfest` validation without any manual post-generation edits
   5. `.copier-answers.yml` exists in the generated project root with a visible warning against manual edits
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 02-01-PLAN.md — Create copier.yml with _envops custom delimiters and restructure all files into template/ with .jinja variable substitutions
+- [ ] 02-02-PLAN.md — Add conditional file templates and smoke-test copier copy/update pipeline end-to-end
 
 ### Phase 3: Backend Core
 **Goal**: A generated integration with default options (single-step config, single coordinator) installs, loads, creates a device entry, and exposes a sensor entity in HA
@@ -114,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffold Fixes | 2/2 | Complete    | 2026-02-19 |
-| 2. Copier Template Scaffolding | 0/TBD | Not started | - |
+| 2. Copier Template Scaffolding | 0/2 | Planning complete | - |
 | 3. Backend Core | 0/TBD | Not started | - |
 | 4. Frontend Card | 0/TBD | Not started | - |
 | 5. Conditional Patterns | 0/TBD | Not started | - |
