@@ -31,10 +31,18 @@ class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card ex
     return document.createElement("[[ project_domain | replace('_', '-') ]]-card-editor");
   }
 
-  static getStubConfig() {
+  static getStubConfig(hass) {
+    if (!hass) {
+      return {
+        header: "[[ project_name ]]",
+        entity: "",
+      };
+    }
+    const entities = Object.keys(hass.states);
+    const sensorEntity = entities.find((e) => e.startsWith("sensor."));
     return {
       header: "[[ project_name ]]",
-      entity: "",
+      entity: sensorEntity || "",
     };
   }
 
@@ -52,25 +60,59 @@ class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card ex
     return 3;
   }
 
+  getGridOptions() {
+    return {
+      rows: 3,
+      columns: 6,
+      min_rows: 2,
+      min_columns: 3,
+    };
+  }
+
   render() {
     if (!this.hass || !this.config) {
-      return html``;
+      return html`
+        <ha-card>
+          <div class="card-content loading">
+            <ha-spinner size="small"></ha-spinner>
+          </div>
+        </ha-card>
+      `;
     }
 
     const entityId = this.config.entity;
-    const stateObj = entityId ? this.hass.states[entityId] : null;
+
+    if (!entityId) {
+      return html`
+        <ha-card header="${this.config.header || ""}">
+          <div class="card-content">
+            <div class="empty">No entity configured</div>
+          </div>
+        </ha-card>
+      `;
+    }
+
+    const stateObj = this.hass.states[entityId];
+
+    if (!stateObj) {
+      return html`
+        <ha-card header="${this.config.header || ""}">
+          <div class="card-content">
+            <ha-alert alert-type="error">
+              Entity not available: ${entityId}
+            </ha-alert>
+          </div>
+        </ha-card>
+      `;
+    }
 
     return html`
-      <ha-card header="${this.config.header}">
+      <ha-card header="${this.config.header || ""}">
         <div class="card-content">
-          ${stateObj
-            ? html`
-                <div class="state">
-                  <span class="label">${stateObj.attributes.friendly_name || entityId}</span>
-                  <span class="value">${stateObj.state}</span>
-                </div>
-              `
-            : html`<div class="empty">No entity configured</div>`}
+          <div class="state">
+            <span class="label">${stateObj.attributes.friendly_name || entityId}</span>
+            <span class="value">${stateObj.state}</span>
+          </div>
         </div>
       </ha-card>
     `;
@@ -78,11 +120,17 @@ class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card ex
 
   static get styles() {
     return css`
-      ha-card {
-        padding: 16px;
+      :host {
+        display: block;
       }
       .card-content {
         padding: 0 16px 16px;
+      }
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 32px 16px;
       }
       .state {
         display: flex;
@@ -178,8 +226,18 @@ class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]CardEdi
   }
 }
 
-customElements.define("[[ project_domain | replace('_', '-') ]]-card", [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card);
-customElements.define("[[ project_domain | replace('_', '-') ]]-card-editor", [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]CardEditor);
+if (!customElements.get("[[ project_domain | replace('_', '-') ]]-card")) {
+  customElements.define(
+    "[[ project_domain | replace('_', '-') ]]-card",
+    [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Card
+  );
+}
+if (!customElements.get("[[ project_domain | replace('_', '-') ]]-card-editor")) {
+  customElements.define(
+    "[[ project_domain | replace('_', '-') ]]-card-editor",
+    [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]CardEditor
+  );
+}
 
 window.customCards = window.customCards || [];
 window.customCards.push({
