@@ -131,6 +131,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
 | 3. Backend Core | 3/3 | Complete    | 2026-02-20 |
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
-| 5. Conditional Patterns | 0/3 | Not started | - |
+| 5. Conditional Patterns | 2/3 | In Progress|  |
 | 6. Test Scaffold | 0/TBD | Not started | - |
 | 7. CI/CD and HACS Distribution | 0/TBD | Not started | - |
