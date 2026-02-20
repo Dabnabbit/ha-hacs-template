@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 3 COMPLETE — all 3 plans executed; Phase 4 (frontend card) next
+**Current focus:** Phase 4 COMPLETE — 04-01 executed (CARD-01 through CARD-08 satisfied); Phase 5 (testing/validation) next
 
 ## Current Position
 
-Phase: 3 of 7 (Backend Core) — COMPLETE
-Plan: 3 of 3 in current phase (03-01, 03-02, 03-03 all complete)
-Status: Phase 3 complete — ApiClient+coordinator (03-01); sensor device_info+PARALLEL_UPDATES (03-02); config flow+options flow+translations+smoke test (03-03)
-Last activity: 2026-02-19 — 03-03 executed (BACK-06, BACK-09)
+Phase: 4 of 7 (Frontend Card) — COMPLETE
+Plan: 1 of 1 in current phase (04-01 complete)
+Status: Phase 4 complete — LitElement card with ha-spinner/ha-alert states, getGridOptions, getStubConfig(hass), duplicate guards, Lovelace auto-registration (04-01)
+Last activity: 2026-02-20 — 04-01 executed (CARD-01 through CARD-08)
 
-Progress: [███████░░░] ~53% (8/15 estimated total plans)
+Progress: [████████░░] ~60% (9/15 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03)
+- Total plans completed: 9 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01)
 - Average duration: ~2 min
-- Total execution time: ~17 min
+- Total execution time: ~19 min
 
 **By Phase:**
 
@@ -30,13 +30,15 @@ Progress: [███████░░░] ~53% (8/15 estimated total plans)
 | 01-scaffold-fixes | 2 | 4 min | 2 min |
 | 02-copier-template-scaffolding | 3 | 9 min | 3 min |
 | 03-backend-core | 3 | ~5 min | ~2 min |
+| 04-frontend-card | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-03 (1 min), 03-01 (~1 min), 03-02 (1 min), 03-03 (3 min)
+- Last 5 plans: 03-01 (~1 min), 03-02 (1 min), 03-03 (3 min), 04-01 (2 min)
 - Trend: Consistent
 
 *Updated after each plan completion*
 | Phase 03-backend-core P03 | 3 | 2 tasks | 3 files |
+| Phase 04-frontend-card P01 | 2 | 3 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -67,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 03-backend-core]: manifest.json.jinja and hacs.json.jinja verified correct from Phase 1/2 — no changes needed for BACK-07 and BACK-08
 - [Phase 03-03]: Options flow stores reconfigured values in entry.data via async_update_entry so coordinator re-reads on reload (not entry.options)
 - [Phase 03-03]: Git tag 0.1.0 must be advanced to HEAD after each phase that adds new .jinja template files — copier uses tagged version for file list
+- [Phase 04-01]: ha-spinner (not ha-circular-progress) for loading state — ha-circular-progress removed in HA frontend 20250326.0 (~HA 2025.4)
+- [Phase 04-01]: getGridOptions() is an instance method (not static) — called on card instances by HA sections view framework
+- [Phase 04-01]: Lovelace auto-registration wrapped in broad try/except (noqa: BLE001) — community API pattern, not official; fallback to manual registration is acceptable
 
 ### Pending Todos
 
@@ -74,13 +79,16 @@ None yet.
 
 ### Blockers/Concerns
 
-- [Phase 4]: LitElement version (Lit 2.x vs 3.x) in HA 2025.7 needs confirmation at smoke-test time — extraction pattern works regardless but API differences may surface
+None currently. Phase 4 LitElement version concern resolved: prototype extraction pattern is version-agnostic; smoke test confirmed rendered output is correct.
 
 ## Session Continuity
 
-Last session: 2026-02-19
-Stopped at: Completed 03-03-PLAN.md (config flow + options flow + translations + smoke test; BACK-06/09 satisfied)
+Last session: 2026-02-20
+Stopped at: Completed 04-01-PLAN.md (card JS loading/error states, getGridOptions, Lovelace auto-registration, copier smoke test; CARD-01 through CARD-08 satisfied)
 Resume file: None
+
+### Phase 4 Execution Summary (COMPLETE)
+- **Plan 04-01 (Wave 1):** Enhanced [[ project_domain ]]-card.js.jinja with ha-spinner loading state, ha-alert error state, four-state render(), getGridOptions(), getStubConfig(hass) with sensor entity lookup, duplicate element guards. Added _async_register_lovelace_resource() to __init__.py.jinja. Copier smoke test: all 14 checks pass. Advanced git tag 0.1.0 to HEAD. 2 commits.
 
 ### Phase 3 Execution Summary (COMPLETE)
 - **Plan 03-01 (Wave 1):** Created api.py.jinja with ApiClient class (CannotConnectError, InvalidAuthError, Bearer auth, timeout, _request, async_test_connection, async_get_data). Cleaned const.py.jinja of CONF_* shadowing; added DEFAULT_TIMEOUT=30. Wired coordinator.py.jinja to ApiClient. 2 commits.

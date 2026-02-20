@@ -44,14 +44,14 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 
 ### Frontend Card
 
-- [ ] **CARD-01**: Single-file LitElement card with HA prototype extraction (no CDN, no npm, no build tools)
-- [ ] **CARD-02**: Card editor class with `getConfigElement()`, `config-changed` event dispatch (`bubbles: true, composed: true`)
-- [ ] **CARD-03**: `window.customCards` registration with `type`, `name`, `description`, and `preview: true`
-- [ ] **CARD-04**: `getStubConfig()` returns default config for card picker preview
-- [ ] **CARD-05**: `getCardSize()` returns appropriate row count for dashboard layout
-- [ ] **CARD-06**: Theme integration via CSS custom properties only (`var(--primary-color)`, etc.) — no hardcoded colors
-- [ ] **CARD-07**: Loading state (spinner while coordinator data unavailable) and error state (message when entity unavailable)
-- [ ] **CARD-08**: `ha-card` wrapper element for consistent HA card visual chrome
+- [x] **CARD-01**: Single-file LitElement card with HA prototype extraction (no CDN, no npm, no build tools)
+- [x] **CARD-02**: Card editor class with `getConfigElement()`, `config-changed` event dispatch (`bubbles: true, composed: true`)
+- [x] **CARD-03**: `window.customCards` registration with `type`, `name`, `description`, and `preview: true`
+- [x] **CARD-04**: `getStubConfig()` returns default config for card picker preview
+- [x] **CARD-05**: `getCardSize()` returns appropriate row count for dashboard layout
+- [x] **CARD-06**: Theme integration via CSS custom properties only (`var(--primary-color)`, etc.) — no hardcoded colors
+- [x] **CARD-07**: Loading state (spinner while coordinator data unavailable) and error state (message when entity unavailable)
+- [x] **CARD-08**: `ha-card` wrapper element for consistent HA card visual chrome
 
 ### Conditional Patterns
 
@@ -132,14 +132,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BACK-08 | Phase 3 | Complete |
 | BACK-09 | Phase 3 | Complete |
 | BACK-10 | Phase 3 | Complete |
-| CARD-01 | Phase 4 | Pending |
-| CARD-02 | Phase 4 | Pending |
-| CARD-03 | Phase 4 | Pending |
-| CARD-04 | Phase 4 | Pending |
-| CARD-05 | Phase 4 | Pending |
-| CARD-06 | Phase 4 | Pending |
-| CARD-07 | Phase 4 | Pending |
-| CARD-08 | Phase 4 | Pending |
+| CARD-01 | Phase 4 | Complete |
+| CARD-02 | Phase 4 | Complete |
+| CARD-03 | Phase 4 | Complete |
+| CARD-04 | Phase 4 | Complete |
+| CARD-05 | Phase 4 | Complete |
+| CARD-06 | Phase 4 | Complete |
+| CARD-07 | Phase 4 | Complete |
+| CARD-08 | Phase 4 | Complete |
 | COND-01 | Phase 5 | Pending |
 | COND-02 | Phase 5 | Pending |
 | COND-03 | Phase 5 | Pending |
