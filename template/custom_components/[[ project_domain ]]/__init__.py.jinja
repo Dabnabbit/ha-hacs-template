@@ -31,6 +31,18 @@ type [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]ConfigEn
 ]
 
 
+async def _async_register_lovelace_resource(lovelace) -> None:
+    """Register the card JS as a Lovelace resource if not already present."""
+    url = FRONTEND_SCRIPT_URL
+    existing = [
+        r for r in lovelace.resources.async_items() if url in r.get("url", "")
+    ]
+    if not existing:
+        await lovelace.resources.async_create_item(
+            {"res_type": "module", "url": url}
+        )
+
+
 async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     """Set up the [[ project_name ]] integration."""
     frontend_path = Path(__file__).parent / "frontend"
@@ -47,6 +59,20 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     except RuntimeError:
         # Path already registered — happens on reload
         pass
+
+    # Auto-register as Lovelace resource (storage mode only)
+    try:
+        lovelace = hass.data.get("lovelace")
+        if lovelace and getattr(lovelace, "mode", None) == "storage":
+            if lovelace.resources.loaded:
+                await _async_register_lovelace_resource(lovelace)
+            else:
+                async def _on_lovelace_loaded(_event=None):
+                    await _async_register_lovelace_resource(lovelace)
+                hass.bus.async_listen_once("lovelace_updated", _on_lovelace_loaded)
+    except Exception:  # noqa: BLE001
+        _LOGGER.debug("Could not auto-register Lovelace resource; add manually")
+
     return True
 
 
