@@ -59,7 +59,7 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 - [x] **COND-02**: Service call with `SupportsResponse` pattern in `services.py` + `services.yaml` (conditional, for Argos/Requestarr)
 - [x] **COND-03**: Multi-step config flow variant replacing single-step `config_flow.py` (conditional, for Requestarr)
 - [x] **COND-04**: Secondary coordinator with independent poll interval in `coordinator_secondary.py` (conditional, for Immich)
-- [ ] **COND-05**: `__init__.py` uses minimal Jinja2 `{% if %}` blocks for conditional import/registration lines only
+- [x] **COND-05**: `__init__.py` uses minimal Jinja2 `{% if %}` blocks for conditional import/registration lines only
 - [x] **COND-06**: `manifest.json` conditionally includes `websocket_api` in `dependencies` when WebSocket pattern is selected
 
 ### Testing
@@ -144,7 +144,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COND-02 | Phase 5 | Complete |
 | COND-03 | Phase 5 | Complete |
 | COND-04 | Phase 5 | Complete |
-| COND-05 | Phase 5 | Pending |
+| COND-05 | Phase 5 | Complete |
 | COND-06 | Phase 5 | Complete |
 | TEST-01 | Phase 6 | Pending |
 | TEST-02 | Phase 6 | Pending |
