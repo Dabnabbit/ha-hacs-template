@@ -73,7 +73,7 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 ### CI/CD & Distribution
 
 - [x] **CICD-01**: `.github/workflows/validate.yml` running `hassfest` and `hacs/action` on push and PR
-- [x] **CICD-02**: `.github/workflows/release.yml` producing version-tagged zip from git tag with manifest version injection
+- [ ] **CICD-02**: ~~`.github/workflows/release.yml` producing version-tagged zip from git tag with manifest version injection~~ — **Deferred**: descoped to per-project setup; each child project adds its own release workflow
 - [x] **CICD-03**: Template-generated `README.md` with HACS installation badge, setup instructions, and card usage
 - [x] **CICD-04**: Generated project has correct `.gitignore` for Python, IDE files, and OS artifacts
 
@@ -152,7 +152,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEST-04 | Phase 6 | Complete |
 | TEST-05 | Phase 6 | Complete |
 | CICD-01 | Phase 7 | Complete |
-| CICD-02 | Phase 7 | Complete |
+| CICD-02 | Phase 7 | Deferred |
 | CICD-03 | Phase 7 | Complete |
 | CICD-04 | Phase 7 | Complete |
 
@@ -160,6 +160,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 - v1 requirements: 49 total
 - Mapped to phases: 49
 - Unmapped: 0
+- Deferred: 1 (CICD-02 — release workflow descoped to per-project setup)
 
 ---
 *Requirements defined: 2026-02-19*

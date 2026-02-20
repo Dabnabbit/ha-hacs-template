@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Frontend Card** - Single-file LitElement base card with editor, theme integration, loading/error states, and card registry (completed 2026-02-20)
 - [x] **Phase 5: Conditional Patterns** - Four Copier-conditional file sets: WebSocket, services, multi-coordinator, multi-step config flow (completed 2026-02-20)
 - [x] **Phase 6: Test Scaffold** - pytest infrastructure with HA fixtures, config flow tests, coordinator mocking, and conditional test files (completed 2026-02-20)
-- [ ] **Phase 7: CI/CD and HACS Distribution** - GitHub Actions for hassfest/HACS validation, tag-based release workflow, and distribution files
+- [x] **Phase 7: CI/CD and HACS Distribution** - GitHub Actions for hassfest/HACS validation, tag-based release workflow, and distribution files (completed 2026-02-20)
 
 ## Phase Details
 
@@ -114,12 +114,12 @@ Plans:
 - [x] 06-03-PLAN.md — Conditional test_websocket.py and copier smoke test (all-OFF / all-ON)
 
 ### Phase 7: CI/CD and HACS Distribution
-**Goal**: Every push to a generated project runs hassfest and HACS validation automatically; tagging a release produces a distribution zip with the correct manifest version injected
+**Goal**: Every push to a generated project runs hassfest and HACS validation automatically; generated projects include HACS-ready README and comprehensive .gitignore
 **Depends on**: Phase 6
-**Requirements**: CICD-01, CICD-02, CICD-03, CICD-04
+**Requirements**: CICD-01, CICD-03, CICD-04 (CICD-02 deferred to per-project setup)
 **Success Criteria** (what must be TRUE):
   1. Pushing to a generated project's main branch triggers the validate workflow; a manifest error causes the check to fail visibly
-  2. Creating a git tag (e.g., `v1.0.0`) triggers the release workflow and produces a downloadable zip artifact with the version injected into `manifest.json`
+  2. ~~Creating a git tag (e.g., `v1.0.0`) triggers the release workflow and produces a downloadable zip artifact with the version injected into `manifest.json`~~ — **Deferred**: release workflow is per-project; not templated
   3. Generated `README.md` includes a HACS installation badge, setup instructions, and card usage section populated with the project's domain name
   4. Generated `.gitignore` covers Python, IDE, and OS artifacts; no `__pycache__` or `.DS_Store` files appear in a fresh commit
 **Plans**: 1 plan
@@ -139,4 +139,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
 | 5. Conditional Patterns | 3/3 | Complete    | 2026-02-20 |
 | 6. Test Scaffold | 3/3 | Complete   | 2026-02-20 |
-| 7. CI/CD and HACS Distribution | 0/1 | Not started | - |
+| 7. CI/CD and HACS Distribution | 0/1 | Complete    | 2026-02-20 |
