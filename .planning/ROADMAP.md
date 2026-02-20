@@ -92,7 +92,11 @@ Plans:
   2. Selecting service calls generates `services.py` and `services.yaml` with a `SupportsResponse` pattern; deselecting omits them
   3. Selecting multi-step config flow replaces the default `config_flow.py` with a multi-step variant; both variants pass `hassfest`
   4. Selecting secondary coordinator generates `coordinator_secondary.py` with its own poll interval; `entry.runtime_data` holds both coordinators
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 05-01-PLAN.md -- WebSocket command handler, service action handler, services.yaml, manifest conditional dependency
+- [ ] 05-02-PLAN.md -- Multi-step config flow inline variant, secondary coordinator
+- [ ] 05-03-PLAN.md -- __init__.py conditional wiring, copier smoke test (all-on / all-off)
 
 ### Phase 6: Test Scaffold
 **Goal**: Generated projects include a working pytest setup that covers config flow, coordinator, and conditional modules; child project CI can run tests without additional configuration
@@ -127,6 +131,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
 | 3. Backend Core | 3/3 | Complete    | 2026-02-20 |
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
-| 5. Conditional Patterns | 0/TBD | Not started | - |
+| 5. Conditional Patterns | 0/3 | Not started | - |
 | 6. Test Scaffold | 0/TBD | Not started | - |
 | 7. CI/CD and HACS Distribution | 0/TBD | Not started | - |
