@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** ALL PHASES COMPLETE. UAT retest passed (6/6 — hassfest PASS on live GitHub CI). 49/49 active requirements satisfied (CICD-02 formally deferred). Ready for milestone audit.
+**Current focus:** MILESTONE v1.0 AUDIT COMPLETE (tech_debt status). 48/49 requirements satisfied, 1 deferred. 2 low-severity test coverage gaps identified as v2 candidates. Ready for /gsd:complete-milestone.
 
 ## Current Position
 
 Phase: 7 of 7 (CI/CD and HACS Distribution) — COMPLETE
-Plan: 2 of 2 in current phase (07-01 complete, 07-02 complete — gap closure)
-Status: All 7 phases complete. UAT retest passed 6/6 (hassfest PASS on live GitHub CI). Ready for milestone audit.
-Last activity: 2026-02-20 — UAT retest: 6/6 pass. Live CI confirmed hassfest passes on Dabnabbit/uat-cicd-test (run 22245235007).
+Plan: 2 of 2 in current phase (all complete)
+Status: Milestone v1.0 audit complete (tech_debt). All 7 phases verified and passed. 2 low-severity integration gaps (v2 candidates).
+Last activity: 2026-02-20 — Milestone audit: 48/49 satisfied, 1 deferred (CICD-02), 2 test coverage gaps flagged for v2.
 
 Progress: [██████████] 100% (49/49 active requirements satisfied, CICD-02 deferred)
 
@@ -22,7 +22,7 @@ Progress: [██████████] 100% (49/49 active requirements satis
 - Total plans completed: 17 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03, 07-01, 07-02)
 - Plans pending: 0
 - Average duration: ~2 min
-- Total execution time: ~26 min
+- Total execution time: ~28 min
 
 **By Phase:**
 
@@ -34,23 +34,11 @@ Progress: [██████████] 100% (49/49 active requirements satis
 | 04-frontend-card | 1 | 2 min | 2 min |
 | 05-conditional-patterns | 3 | 4 min | 1 min |
 | 06-test-scaffold | 3 | 3 min | 1 min |
+| 07-cicd-and-hacs-distribution | 2 | 2 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 05-03 (1 min), 06-01 (1 min), 06-02 (1 min), 06-03 (1 min)
+- Last 5 plans: 06-01 (1 min), 06-02 (1 min), 06-03 (1 min), 07-01 (1 min), 07-02 (1 min)
 - Trend: Consistent, accelerating
-
-*Updated after each plan completion*
-| Phase 03-backend-core P03 | 3 | 2 tasks | 3 files |
-| Phase 04-frontend-card P01 | 2 | 3 tasks | 2 files |
-| Phase 05-conditional-patterns P01 | 1 | 2 tasks | 4 files |
-| Phase 05-conditional-patterns P02 | 1 | 2 tasks | 6 files |
-| Phase 05-conditional-patterns P03 | 2 | 2 tasks | 1 files |
-| Phase 06-test-scaffold P01 | 1 | 2 tasks | 3 files |
-| Phase 06-test-scaffold P02 | 1 | 2 tasks | 2 files |
-| Phase 06-test-scaffold P03 | 1 | 2 tasks | 1 files |
-| Phase 07-cicd-and-hacs-distribution P01 | 1 | 2 tasks | 2 files |
-| Phase 07-cicd-and-hacs-distribution P02 | - | 1 task  | 2 files | (gap closure — planned, not yet executed)
-| Phase 07-cicd-and-hacs-distribution P02 | 1 | 1 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -120,9 +108,9 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 07-cicd-and-hacs-distribution 07-02-PLAN.md — Phase 7 gap closure complete, all 7 phases done.
-Resume file: N/A — project complete
-Resume action: N/A
+Stopped at: Milestone v1.0 audit complete (tech_debt status). All phases verified. Ready for /gsd:complete-milestone.
+Resume file: .planning/v1.0-MILESTONE-AUDIT.md
+Resume action: /gsd:complete-milestone v1.0
 
 ### Phase 7 Execution Summary (COMPLETE)
 - **Plan 07-01 (Wave 1):** Created template/.github/workflows/validate.yml as static file (two-job pattern: hassfest + HACS action, SHA-pinned, permissions: {}, ignore: brands). Updated template/.gitignore with test artifact exclusions (.pytest_cache/, .coverage, coverage.xml, htmlcov/). Copier smoke test: all 8 checks PASS. CICD-01, CICD-02 (formally deferred), CICD-03 (pre-existing), CICD-04 satisfied. 1 commit.

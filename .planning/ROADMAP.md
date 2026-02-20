@@ -125,7 +125,7 @@ Plans:
 **Plans**: 2 plans
 Plans:
 - [x] 07-01-PLAN.md — Create validate.yml workflow, update .gitignore, and copier smoke test
-- [ ] 07-02-PLAN.md — Gap closure: fix hassfest failures (add "http" dependency, add CONFIG_SCHEMA)
+- [x] 07-02-PLAN.md — Gap closure: fix hassfest failures (add "http" dependency, add CONFIG_SCHEMA)
 
 ## Progress
 
