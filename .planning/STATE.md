@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Milestone v1.0 audit complete — 40/49 requirements satisfied (phases 1-5); phases 6-7 (TEST, CICD) not yet planned
+**Current focus:** Phase 6 (Test Scaffold) in progress — plan 06-01 complete, pytest infrastructure template files created
 
 ## Current Position
 
-Phase: 5 of 7 (Conditional Patterns) — COMPLETE
-Plan: 3 of 3 in current phase (05-01, 05-02, 05-03 complete)
-Status: Milestone v1.0 audited — phases 1-5 complete and verified, UAT passed (7/7), integration check clean (5/5 flows). Phases 6-7 not yet planned.
-Last activity: 2026-02-20 — Milestone audit completed, 40/49 requirements satisfied
+Phase: 6 of 7 (Test Scaffold) — IN PROGRESS
+Plan: 1 of 3 in current phase (06-01 complete)
+Status: 06-01 complete — pyproject.toml.jinja (asyncio_mode=auto), tests/__init__.py.jinja, tests/conftest.py.jinja created. TEST-01 and TEST-05 satisfied.
+Last activity: 2026-02-20 — 06-01 executed, 42/49 requirements satisfied
 
-Progress: [████████░░] ~82% (40/49 requirements satisfied)
+Progress: [████████░░] ~86% (42/49 requirements satisfied)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03)
+- Total plans completed: 13 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01)
 - Average duration: ~2 min
-- Total execution time: ~23 min
+- Total execution time: ~24 min
 
 **By Phase:**
 
@@ -32,6 +32,7 @@ Progress: [████████░░] ~82% (40/49 requirements satisfied)
 | 03-backend-core | 3 | ~5 min | ~2 min |
 | 04-frontend-card | 1 | 2 min | 2 min |
 | 05-conditional-patterns | 3 | 4 min | 1 min |
+| 06-test-scaffold | 1 | 1 min | 1 min |
 
 **Recent Trend:**
 - Last 5 plans: 03-02 (1 min), 03-03 (3 min), 04-01 (2 min), 05-01 (1 min)
@@ -43,6 +44,7 @@ Progress: [████████░░] ~82% (40/49 requirements satisfied)
 | Phase 05-conditional-patterns P01 | 1 | 2 tasks | 4 files |
 | Phase 05-conditional-patterns P02 | 1 | 2 tasks | 6 files |
 | Phase 05-conditional-patterns P03 | 2 | 2 tasks | 1 files |
+| Phase 06-test-scaffold P01 | 1 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -84,6 +86,9 @@ Recent decisions affecting current work:
 - [Phase 05-conditional-patterns]: coordinator_secondary creates its own ApiClient (not shared with primary) to avoid concurrent refresh race conditions
 - [Phase 05-conditional-patterns]: WebSocket and services called in async_setup (not async_setup_entry) — prevents duplicate handler registration when multiple config entries exist
 - [Phase 05-conditional-patterns]: runtime_data uses if/else branch so all-ON case passes coordinator_secondary=coordinator_secondary to the Data constructor
+- [06-01]: asyncio_mode=auto (not strict) — HA ecosystem default; zero per-test @pytest.mark.asyncio annotation; mandatory since pytest-asyncio 0.21/1.0
+- [06-01]: tests/__init__.py.jinja contains comment line (not empty) — guards against Copier skipping empty-output files (Pitfall 5)
+- [06-01]: mock_setup_entry patches custom_components.[[ project_domain ]].async_setup_entry at top-level __init__ (not config_flow) — where HA calls the function
 
 ### Pending Todos
 
@@ -96,8 +101,11 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Milestone v1.0 audit complete — 40/49 requirements, 5/5 phases verified+UAT, integration check clean. Phases 6-7 (TEST-01..05, CICD-01..04) remain.
-Resume file: .planning/v1.0-MILESTONE-AUDIT.md
+Stopped at: Completed 06-01-PLAN.md — pytest infrastructure template files (pyproject.toml.jinja, tests/__init__.py.jinja, tests/conftest.py.jinja). TEST-01, TEST-05 satisfied.
+Resume file: .planning/phases/06-test-scaffold/06-01-SUMMARY.md
+
+### Phase 6 Execution Summary (IN PROGRESS)
+- **Plan 06-01 (Wave 1):** Created pyproject.toml.jinja (asyncio_mode=auto, testpaths, pytest-homeassistant-custom-component dep), tests/__init__.py.jinja (non-empty package marker), tests/conftest.py.jinja (auto_enable_custom_integrations autouse fixture + mock_setup_entry fixture with [[ project_domain ]] Copier variable). TEST-01, TEST-05 satisfied. 2 commits.
 
 ### Phase 5 Execution Summary (COMPLETE)
 - **Plan 05-01 (Wave 1):** Replaced websocket.py stub with async handler (@websocket_command + @async_response + async_setup_websocket). Replaced services.py stub with SupportsResponse.OPTIONAL handler (async_register_services). Created new services.yaml conditional template. Updated manifest.json.jinja with conditional websocket_api dependency. COND-01, COND-02, COND-06 satisfied. 2 commits.
