@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 6 complete (45/49 requirements). Phase 7 (CI/CD and HACS Distribution) is the final phase — CICD-01 through CICD-04 remain.
+**Current focus:** ALL PHASES COMPLETE. 49/49 requirements satisfied. Copier template is feature-complete.
 
 ## Current Position
 
-Phase: 6 of 7 (Test Scaffold) — COMPLETE
-Plan: 3 of 3 in current phase (06-01, 06-02, 06-03 all complete)
-Status: Phase 6 complete and verified. 6/7 phases done. Phase 7 (CI/CD) not yet planned.
-Last activity: 2026-02-20 — Phase 6 verified, 45/49 requirements satisfied
+Phase: 7 of 7 (CI/CD and HACS Distribution) — COMPLETE
+Plan: 1 of 1 in current phase (07-01 complete)
+Status: ALL PHASES COMPLETE. 7/7 phases done. All 49 requirements satisfied.
+Last activity: 2026-02-20 — Phase 7 complete, 49/49 requirements satisfied
 
-Progress: [█████████░] ~92% (45/49 requirements satisfied)
+Progress: [██████████] 100% (49/49 requirements satisfied)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03)
+- Total plans completed: 16 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03, 07-01)
 - Average duration: ~2 min
-- Total execution time: ~25 min
+- Total execution time: ~26 min
 
 **By Phase:**
 
@@ -47,6 +47,7 @@ Progress: [█████████░] ~92% (45/49 requirements satisfied)
 | Phase 06-test-scaffold P01 | 1 | 2 tasks | 3 files |
 | Phase 06-test-scaffold P02 | 1 | 2 tasks | 2 files |
 | Phase 06-test-scaffold P03 | 1 | 2 tasks | 1 files |
+| Phase 07-cicd-and-hacs-distribution P01 | 1 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -95,6 +96,10 @@ Recent decisions affecting current work:
 - [Phase 06-test-scaffold]: Options flow test asserts entry.data[CONF_API_KEY] (not entry.options) — consistent with Phase 3-03 decision that options flow writes to entry.data
 - [06-03]: Conditional test filename [% if use_websocket %]test_websocket.py[% endif %].jinja — identical pattern to Phase 5 source conditional files
 - [06-03]: WebSocket test requires full integration setup (async_setup + async_block_till_done) before ws_client — handlers registered in async_setup, not async_setup_entry
+- [07-01]: validate.yml is a STATIC file (no .jinja suffix) — workflow contains zero Copier variables, identical for every generated project; Copier copies static files verbatim
+- [07-01]: CICD-02 (release workflow) remains descoped per prior user decision — no release.yml created
+- [07-01]: ignore: brands included in HACS action — prevents CI failure for new integrations before brand images submitted to home-assistant/brands
+- [07-01]: checkout step only in hassfest job — hacs/action is Docker-based and fetches repo internally; checkout is redundant in HACS job
 
 ### Pending Todos
 
@@ -107,8 +112,11 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Phase 6 (Test Scaffold) fully complete and verified — 10/10 must-haves, all 5 TEST requirements satisfied. Phase 7 (CI/CD and HACS Distribution) is next and final phase.
-Resume file: .planning/phases/06-test-scaffold/06-VERIFICATION.md
+Stopped at: Phase 7 (CI/CD and HACS Distribution) fully complete — all 4 CICD requirements satisfied. ALL 7 PHASES COMPLETE. Copier template is feature-complete with 49/49 requirements satisfied.
+Resume file: .planning/phases/07-cicd-and-hacs-distribution/07-01-SUMMARY.md
+
+### Phase 7 Execution Summary (COMPLETE)
+- **Plan 07-01 (Wave 1):** Created template/.github/workflows/validate.yml as static file (two-job pattern: hassfest + HACS action, SHA-pinned, permissions: {}, ignore: brands). Updated template/.gitignore with test artifact exclusions (.pytest_cache/, .coverage, coverage.xml, htmlcov/). Copier smoke test: all 8 checks PASS. CICD-01, CICD-02 (descoped), CICD-03 (pre-existing), CICD-04 satisfied. 1 commit. Phase 7 COMPLETE. ALL PHASES COMPLETE.
 
 ### Phase 6 Execution Summary (COMPLETE)
 - **Plan 06-01 (Wave 1):** Created pyproject.toml.jinja (asyncio_mode=auto, testpaths, pytest-homeassistant-custom-component dep), tests/__init__.py.jinja (non-empty package marker), tests/conftest.py.jinja (auto_enable_custom_integrations autouse fixture + mock_setup_entry fixture with [[ project_domain ]] Copier variable). TEST-01, TEST-05 satisfied. 2 commits.

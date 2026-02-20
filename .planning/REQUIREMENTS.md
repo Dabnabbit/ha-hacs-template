@@ -72,10 +72,10 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 
 ### CI/CD & Distribution
 
-- [ ] **CICD-01**: `.github/workflows/validate.yml` running `hassfest` and `hacs/action` on push and PR
-- [ ] **CICD-02**: `.github/workflows/release.yml` producing version-tagged zip from git tag with manifest version injection
-- [ ] **CICD-03**: Template-generated `README.md` with HACS installation badge, setup instructions, and card usage
-- [ ] **CICD-04**: Generated project has correct `.gitignore` for Python, IDE files, and OS artifacts
+- [x] **CICD-01**: `.github/workflows/validate.yml` running `hassfest` and `hacs/action` on push and PR
+- [x] **CICD-02**: `.github/workflows/release.yml` producing version-tagged zip from git tag with manifest version injection
+- [x] **CICD-03**: Template-generated `README.md` with HACS installation badge, setup instructions, and card usage
+- [x] **CICD-04**: Generated project has correct `.gitignore` for Python, IDE files, and OS artifacts
 
 ## v2 Requirements
 
@@ -151,10 +151,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TEST-03 | Phase 6 | Complete |
 | TEST-04 | Phase 6 | Complete |
 | TEST-05 | Phase 6 | Complete |
-| CICD-01 | Phase 7 | Pending |
-| CICD-02 | Phase 7 | Pending |
-| CICD-03 | Phase 7 | Pending |
-| CICD-04 | Phase 7 | Pending |
+| CICD-01 | Phase 7 | Complete |
+| CICD-02 | Phase 7 | Complete |
+| CICD-03 | Phase 7 | Complete |
+| CICD-04 | Phase 7 | Complete |
 
 **Coverage:**
 - v1 requirements: 49 total
