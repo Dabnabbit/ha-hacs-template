@@ -65,8 +65,8 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 ### Testing
 
 - [x] **TEST-01**: `conftest.py` with `enable_custom_integrations` fixture and HA test helpers
-- [ ] **TEST-02**: `test_config_flow.py` covering successful setup, connection failure, duplicate abort, and options flow
-- [ ] **TEST-03**: `test_coordinator.py` with mocked API client and coordinator refresh testing
+- [x] **TEST-02**: `test_config_flow.py` covering successful setup, connection failure, duplicate abort, and options flow
+- [x] **TEST-03**: `test_coordinator.py` with mocked API client and coordinator refresh testing
 - [ ] **TEST-04**: Conditional test files generated matching conditional source modules (e.g., `test_websocket.py` when WebSocket enabled)
 - [x] **TEST-05**: `pyproject.toml` or `pytest.ini` with `asyncio_mode = auto` and `pytest-homeassistant-custom-component` dependency
 
@@ -147,8 +147,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COND-05 | Phase 5 | Complete |
 | COND-06 | Phase 5 | Complete |
 | TEST-01 | Phase 6 | Complete |
-| TEST-02 | Phase 6 | Pending |
-| TEST-03 | Phase 6 | Pending |
+| TEST-02 | Phase 6 | Complete |
+| TEST-03 | Phase 6 | Complete |
 | TEST-04 | Phase 6 | Pending |
 | TEST-05 | Phase 6 | Complete |
 | CICD-01 | Phase 7 | Pending |
