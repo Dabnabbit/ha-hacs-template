@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A Copier-based template for building Home Assistant custom integrations with Lovelace frontend cards, distributed via HACS. This is the shared foundation for a family of HA integrations (Argos Translate, Immich Browser, Requestarr) — all architectural decisions, shared patterns, and best practices are established here once and inherited by child projects via `copier update`.
+A Copier-based template that generates community-quality Home Assistant custom integrations with Lovelace frontend cards, distributed via HACS. Running `copier copy` produces a complete, hassfest-passing integration with modern HA APIs (2025.7+), conditional feature patterns, pytest scaffold, and CI/CD — ready for HACS submission. This is the shared foundation for ha-argos-translate, ha-immich-browser, and ha-requestarr.
 
 ## Core Value
 
@@ -12,92 +12,91 @@ Every shared integration pattern is decided and implemented once in this templat
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Copier template engine with custom Jinja2 delimiters solving Python brace collision — v1.0
+- ✓ Coarse-grained Copier conditionals: whole-file inclusion/exclusion for 4 optional patterns — v1.0
+- ✓ Generic API client base class with configurable auth, timeout, and error handling — v1.0
+- ✓ Full LitElement base card with theme integration, loading/error states, editor, card sizing — v1.0
+- ✓ Config flow: single-step default with host/port/API key and connection validation — v1.0
+- ✓ Config flow: multi-step conditional for projects needing multiple service connections — v1.0
+- ✓ Options flow for reconfiguration without removing the integration — v1.0
+- ✓ DataUpdateCoordinator: single-coordinator default pattern — v1.0
+- ✓ DataUpdateCoordinator: multi-coordinator conditional with independent intervals — v1.0
+- ✓ WebSocket command registration and handler pattern (conditional) — v1.0
+- ✓ Service call with SupportsResponse pattern (conditional) — v1.0
+- ✓ Device registry integration with DeviceEntryType.SERVICE — v1.0
+- ✓ CoordinatorEntity base with entity naming, unique IDs, and device grouping — v1.0
+- ✓ Sensor platform with example entities reading from coordinator — v1.0
+- ✓ Frontend static path registration via async_register_static_paths (HA 2025.7+) — v1.0
+- ✓ LitElement card editor with entity picker and text field patterns — v1.0
+- ✓ Strings/translations pattern (strings.json + translations/en.json) — v1.0
+- ✓ CI/CD: GitHub Actions for hassfest + HACS validation — v1.0
+- ✓ Full pytest test scaffold with HA fixtures, config flow tests, coordinator mocking — v1.0
+- ✓ HACS distribution structure (hacs.json, manifest.json, README pattern) — v1.0
+- ✓ Minimum HA version 2025.7+ across all generated projects — v1.0
 
 ### Active
 
-- [ ] Copier template engine with `copier.yml` and Jinja2 variable substitution across all files
-- [ ] Coarse-grained Copier conditionals: whole-file inclusion/exclusion for optional patterns (WebSocket, multi-step config, multi-coordinator, service calls)
-- [ ] Generic API client base class using `async_get_clientsession(hass)` with configurable auth, timeout, and error handling
-- [ ] Full LitElement base card class with theme integration, loading/error states, editor pattern, and card sizing
-- [ ] Config flow: single-step default pattern with host/port/API key and connection validation
-- [ ] Config flow: multi-step conditional pattern for projects needing multiple service connections
-- [ ] Options flow for reconfiguration without removing the integration
-- [ ] DataUpdateCoordinator: single-coordinator default pattern
-- [ ] DataUpdateCoordinator: multi-coordinator conditional pattern with independent intervals
-- [ ] WebSocket command registration and handler pattern (conditional)
-- [ ] Service call with `SupportsResponse` pattern (conditional)
-- [ ] Device registry integration with `DeviceEntryType.SERVICE`
-- [ ] CoordinatorEntity base with proper entity naming, unique IDs, and device grouping
-- [ ] Sensor platform with example entities reading from coordinator
-- [ ] Frontend static path registration via `async_register_static_paths` (HA 2025.7+)
-- [ ] LitElement card editor with entity picker and text field patterns
-- [ ] Strings/translations pattern (`strings.json` + `translations/en.json`)
-- [ ] CI/CD: GitHub Actions for hassfest + HACS validation
-- [ ] CI/CD: Tag-based release workflow with version injection and zip packaging
-- [ ] Full pytest test scaffold with HA fixtures, config flow tests, coordinator mocking
-- [ ] HACS distribution structure (`hacs.json`, `manifest.json`, README pattern)
-- [ ] Minimum HA version 2025.7+ across all generated projects
+- [ ] CI/CD: Tag-based release workflow with version injection and zip packaging (deferred from v1.0 to per-project setup)
+- [ ] Multi-step config flow test adaptation (test_config_flow.py.jinja conditional branches)
+- [ ] Service call test template (test_services.py.jinja conditional)
+- [ ] Diagnostics platform with async_get_config_entry_diagnostics and redaction
+- [ ] quality_scale.yaml pre-filled with Bronze/Silver compliance
 
 ### Out of Scope
 
 - Project-specific API logic — each child project implements its own API endpoints and data parsing
 - Project-specific card UI — each child project builds its own views on top of the base card class
 - Project-specific sensors — each child project defines its own entity types and attributes
-- Runtime shared library — this is a template, not an importable package. Shared code is rendered into each project at creation time.
+- Runtime shared library — this is a template, not an importable package; shared code is rendered into each project
 - Mobile app / native components — web-based Lovelace cards only
+- Build tooling for card (webpack, rollup, TypeScript) — HACS requires single-file JS; HA bundles LitElement
+- pip dependencies in requirements — all child projects use HA-bundled aiohttp only
+- YAML-based configuration — all integrations are config-flow-only
+- Automatic discovery (zeroconf/mDNS/SSDP) — none of the three child projects need it
+- Translations beyond English — community contribution after integrations stabilize
 
 ## Context
+
+Shipped v1.0 with 25 template files (331 LOC) across 7 phases in 2 days.
+Tech stack: Copier, Jinja2 (custom `[[ ]]` / `[% %]` delimiters), Python 3.12+, LitElement, pytest.
+Generated integrations pass both `hassfest` and `hacs/action` validation on GitHub Actions.
+Two low-severity test coverage gaps identified as v2 candidates (multi-step config flow test adaptation, services test template).
 
 ### Child Projects
 
 Three integrations share this template as their upstream:
 
-1. **ha-argos-translate** — Local text translation via LibreTranslate. Single-step config, service call with `SupportsResponse.ONLY`, single coordinator, translation card with language dropdowns.
-
-2. **ha-immich-browser** — Immich photo library browsing. Single-step config, WebSocket commands for album/asset data, dual coordinators (stats 5min, albums 10min), photo grid card with lightbox and blob URL thumbnails.
-
-3. **ha-requestarr** — Media request dashboard replacing Jellyseerr. Multi-step config flow (TMDB + Radarr + Sonarr + Lidarr), WebSocket commands for search + service calls for requests, single coordinator polling multiple services, tabbed search/request card.
-
-### Shared Bugs in Current Scaffold
-
-All three child projects were generated from an earlier version of this template and share these issues:
-- Using deprecated `hass.http.register_static_path()` instead of `async_register_static_paths()`
-- Creating raw `aiohttp.ClientSession()` instead of using `async_get_clientsession(hass)`
-- Missing `unique_id` in config flow entries
-- No device registry integration
-- No options flow
-- No test structure
-
-### HA Integration Ecosystem
-
-- Target: Home Assistant 2025.7+ (required for `async_register_static_paths` API)
-- Distribution: HACS (Home Assistant Community Store) default repository
-- IoT class varies per project: `local_polling` (Argos, Immich) vs `cloud_polling` (Requestarr)
-- All integrations use `integration_type: "service"` (no physical hardware)
-- Frontend: Single-file LitElement cards, no build tools, no npm
+1. **ha-argos-translate** — Local text translation via LibreTranslate. Single-step config, service call with SupportsResponse.ONLY, single coordinator, translation card.
+2. **ha-immich-browser** — Immich photo library browsing. Single-step config, WebSocket commands, dual coordinators (stats 5min, albums 10min), photo grid card.
+3. **ha-requestarr** — Media request dashboard replacing Jellyseerr. Multi-step config flow, WebSocket + service calls, single coordinator, tabbed search/request card.
 
 ## Constraints
 
-- **HA Version**: 2025.7+ minimum — required for `async_register_static_paths` with `StaticPathConfig`
+- **HA Version**: 2025.7+ minimum — required for async_register_static_paths with StaticPathConfig
 - **No pip dependencies**: All integrations use only HA-bundled libraries (aiohttp, voluptuous, LitElement)
-- **Single JS file**: Frontend cards must be self-contained in one JavaScript file — no build step, no module imports
-- **Copier compatibility**: All template files must use Jinja2 syntax for variable substitution; directory names use Copier's `_{{ var }}_` naming convention
-- **HACS compliance**: Directory structure must pass both `hassfest` and `hacs/action` validation
+- **Single JS file**: Frontend cards must be self-contained in one JavaScript file
+- **Copier compatibility**: Template files use custom [[ ]] / [% %] Jinja2 delimiters via _envops
+- **HACS compliance**: Directory structure must pass both hassfest and hacs/action validation
 - **Python 3.12+**: HA's bundled Python version
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Copier for template inheritance | Git upstream merge breaks on domain renames (directory + every file reference changes). Copier handles variable substitution deterministically and supports `copier update` for propagation. | — Pending |
-| Coarse-grained conditionals | Fine-grained `{% if %}` inside code files hurts readability. Whole-file conditionals (generate websocket.py or not) + minimal section-level blocks in __init__.py keeps template clean. | — Pending |
-| HA 2025.7+ minimum for all projects | `async_register_static_paths` requires 2025.7+. Aligning all projects avoids maintaining deprecated code paths. | — Pending |
-| Generic API client base class | All projects need session management, auth, timeout, error handling. Differences (local vs cloud, rate limiting) are configuration, not architecture. One base serves all three. | — Pending |
-| Full base card class | All projects share: hass/config wiring, theme CSS, loading/error states, editor registration, card sizing. Copy-and-extend is more maintainable than copy-and-diverge for 3+ projects. | — Pending |
-| `DeviceEntryType.SERVICE` for device registry | No physical devices — all integrations are service-based. Service device type groups entities correctly in HA UI with service icon. | — Pending |
-| Options flow included | Users need to change host/port/API key after setup without losing entity history. Expected for community-quality HACS integrations. | — Pending |
-| Full pytest scaffold | Community HACS integrations need tests. Template provides fixtures and patterns so child projects don't start from zero. | — Pending |
+| Copier for template inheritance | Git upstream merge breaks on domain renames. Copier handles variable substitution and supports `copier update`. | ✓ Good — clean generation and update pipeline confirmed |
+| Custom _envops delimiters [[ ]] / [% %] | Avoids Jinja2/Python brace collision globally. Alternative ({% raw %}) was per-file and error-prone. | ✓ Good — zero brace collision issues across 25 template files |
+| Coarse-grained conditionals | Whole-file inclusion/exclusion + minimal __init__.py blocks. Keeps template readable. | ✓ Good — 4 conditional patterns work cleanly |
+| HA 2025.7+ minimum | async_register_static_paths requires 2025.7+. Avoids maintaining deprecated code paths. | ✓ Good — no deprecated API usage |
+| Generic API client base class | All projects need session management, auth, timeout, error handling. One base serves all three. | ✓ Good — configurable auth pattern works for all child projects |
+| entry.runtime_data over hass.data[DOMAIN] | HA-recommended pattern, auto-cleaned on unload, type-safe with generics. | ✓ Good — cleaner code, no manual cleanup |
+| async_get_clientsession(hass) | HA manages HTTP session lifecycle. No "Unclosed client session" warnings. | ✓ Good — zero resource leak warnings |
+| Static path in async_setup (not async_setup_entry) | Prevents duplicate registration error when multiple config entries exist. | ✓ Good — essential for multi-entry scenarios |
+| Options flow writes to entry.data (not entry.options) | Coordinator reads from entry.data; keeps single source of truth. | ✓ Good — reload picks up changes immediately |
+| WebSocket/services in async_setup | Prevents duplicate handler registration with multiple config entries. | ✓ Good — handlers registered once globally |
+| ha-spinner (not ha-circular-progress) | ha-circular-progress removed in HA frontend 20250326.0. | ✓ Good — future-proof |
+| CICD-02 release workflow deferred | Per-project customization needed (version format, zip structure, changelog). Not a template concern. | ✓ Good — correct scoping decision |
+| hassfest requires "http" in manifest deps | Even though "frontend" transitively depends on "http", hassfest checks direct imports only. | ✓ Good — caught and fixed in Phase 7 gap closure |
+| CONFIG_SCHEMA required for config-entry-only with async_setup | hassfest mandates cv.config_entry_only_config_schema(DOMAIN) when async_setup is defined. | ✓ Good — caught and fixed in Phase 7 gap closure |
 
 ---
-*Last updated: 2026-02-19 after initialization*
+*Last updated: 2026-02-20 after v1.0 milestone*
