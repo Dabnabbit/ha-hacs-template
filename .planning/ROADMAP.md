@@ -122,7 +122,9 @@ Plans:
   2. Creating a git tag (e.g., `v1.0.0`) triggers the release workflow and produces a downloadable zip artifact with the version injected into `manifest.json`
   3. Generated `README.md` includes a HACS installation badge, setup instructions, and card usage section populated with the project's domain name
   4. Generated `.gitignore` covers Python, IDE, and OS artifacts; no `__pycache__` or `.DS_Store` files appear in a fresh commit
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 07-01-PLAN.md — Create validate.yml workflow, update .gitignore, and copier smoke test
 
 ## Progress
 
@@ -137,4 +139,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
 | 5. Conditional Patterns | 3/3 | Complete    | 2026-02-20 |
 | 6. Test Scaffold | 3/3 | Complete   | 2026-02-20 |
-| 7. CI/CD and HACS Distribution | 0/TBD | Not started | - |
+| 7. CI/CD and HACS Distribution | 0/1 | Not started | - |
