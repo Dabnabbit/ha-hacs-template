@@ -107,7 +107,11 @@ Plans:
   2. `test_config_flow.py` covers successful setup, `CannotConnect` error display, duplicate entry abort, and options flow save
   3. `test_coordinator.py` exercises coordinator refresh with a mocked API client and asserts data is stored correctly
   4. When WebSocket support is selected, a `test_websocket.py` file is generated; when not selected, no websocket test file appears
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 06-01-PLAN.md — pytest infrastructure: pyproject.toml, tests/__init__.py, conftest.py with HA fixtures
+- [ ] 06-02-PLAN.md — Always-on test files: test_config_flow.py (4 cases) and test_coordinator.py (2 cases)
+- [ ] 06-03-PLAN.md — Conditional test_websocket.py and copier smoke test (all-OFF / all-ON)
 
 ### Phase 7: CI/CD and HACS Distribution
 **Goal**: Every push to a generated project runs hassfest and HACS validation automatically; tagging a release produces a distribution zip with the correct manifest version injected
@@ -132,5 +136,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 3. Backend Core | 3/3 | Complete    | 2026-02-20 |
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
 | 5. Conditional Patterns | 3/3 | Complete    | 2026-02-20 |
-| 6. Test Scaffold | 0/TBD | Not started | - |
+| 6. Test Scaffold | 0/3 | Planned | - |
 | 7. CI/CD and HACS Distribution | 0/TBD | Not started | - |
