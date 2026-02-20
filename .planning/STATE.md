@@ -5,21 +5,22 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** ALL PHASES COMPLETE. 49/49 requirements satisfied. Copier template is feature-complete.
+**Current focus:** Phase 7 UAT found 1 gap (hassfest failures). Fix plan 07-02 ready for execution. 48/49 active requirements satisfied (CICD-02 deferred).
 
 ## Current Position
 
-Phase: 7 of 7 (CI/CD and HACS Distribution) — COMPLETE
-Plan: 1 of 1 in current phase (07-01 complete)
-Status: ALL PHASES COMPLETE. 7/7 phases done. All 49 requirements satisfied.
-Last activity: 2026-02-20 — Phase 7 complete, 49/49 requirements satisfied
+Phase: 7 of 7 (CI/CD and HACS Distribution) — GAP CLOSURE PENDING
+Plan: 2 of 2 in current phase (07-01 complete, 07-02 planned — gap closure)
+Status: Phase 7 UAT revealed hassfest failures. Fix plan 07-02 ready. CICD-02 formally deferred.
+Last activity: 2026-02-20 — Phase 7 UAT complete (5 pass, 1 issue), gap diagnosed, fix plan 07-02 verified
 
-Progress: [██████████] 100% (49/49 requirements satisfied)
+Progress: [█████████░] 95% (48/49 active requirements satisfied, 1 deferred)
 
 ## Performance Metrics
 
 **Velocity:**
 - Total plans completed: 16 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03, 07-01)
+- Plans pending: 1 (07-02 gap closure)
 - Average duration: ~2 min
 - Total execution time: ~26 min
 
@@ -48,6 +49,7 @@ Progress: [██████████] 100% (49/49 requirements satisfied)
 | Phase 06-test-scaffold P02 | 1 | 2 tasks | 2 files |
 | Phase 06-test-scaffold P03 | 1 | 2 tasks | 1 files |
 | Phase 07-cicd-and-hacs-distribution P01 | 1 | 2 tasks | 2 files |
+| Phase 07-cicd-and-hacs-distribution P02 | - | 1 task  | 2 files | (gap closure — planned, not yet executed)
 
 ## Accumulated Context
 
@@ -97,9 +99,11 @@ Recent decisions affecting current work:
 - [06-03]: Conditional test filename [% if use_websocket %]test_websocket.py[% endif %].jinja — identical pattern to Phase 5 source conditional files
 - [06-03]: WebSocket test requires full integration setup (async_setup + async_block_till_done) before ws_client — handlers registered in async_setup, not async_setup_entry
 - [07-01]: validate.yml is a STATIC file (no .jinja suffix) — workflow contains zero Copier variables, identical for every generated project; Copier copies static files verbatim
-- [07-01]: CICD-02 (release workflow) remains descoped per prior user decision — no release.yml created
+- [07-01]: CICD-02 (release workflow) formally deferred per user decision — ROADMAP and REQUIREMENTS updated to reflect descoping; no release.yml created
 - [07-01]: ignore: brands included in HACS action — prevents CI failure for new integrations before brand images submitted to home-assistant/brands
 - [07-01]: checkout step only in hassfest job — hacs/action is Docker-based and fetches repo internally; checkout is redundant in HACS job
+- [07-UAT]: hassfest requires `http` in manifest dependencies even though `frontend` transitively depends on it — hassfest checks direct imports only
+- [07-UAT]: hassfest requires CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN) when async_setup is defined in a config-entry-only integration
 
 ### Pending Todos
 
@@ -112,11 +116,14 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Phase 7 (CI/CD and HACS Distribution) fully complete — all 4 CICD requirements satisfied. ALL 7 PHASES COMPLETE. Copier template is feature-complete with 49/49 requirements satisfied.
-Resume file: .planning/phases/07-cicd-and-hacs-distribution/07-01-SUMMARY.md
+Stopped at: Phase 7 UAT complete. 5/6 tests passed. 1 issue: hassfest fails on clean generated project (missing http dep + CONFIG_SCHEMA). Gap diagnosed, fix plan 07-02 created and verified. Ready for execution.
+Resume file: .planning/phases/07-cicd-and-hacs-distribution/07-02-PLAN.md
+Resume action: /gsd:execute-phase 7 --gaps-only
 
-### Phase 7 Execution Summary (COMPLETE)
-- **Plan 07-01 (Wave 1):** Created template/.github/workflows/validate.yml as static file (two-job pattern: hassfest + HACS action, SHA-pinned, permissions: {}, ignore: brands). Updated template/.gitignore with test artifact exclusions (.pytest_cache/, .coverage, coverage.xml, htmlcov/). Copier smoke test: all 8 checks PASS. CICD-01, CICD-02 (descoped), CICD-03 (pre-existing), CICD-04 satisfied. 1 commit. Phase 7 COMPLETE. ALL PHASES COMPLETE.
+### Phase 7 Execution Summary (GAP CLOSURE PENDING)
+- **Plan 07-01 (Wave 1):** Created template/.github/workflows/validate.yml as static file (two-job pattern: hassfest + HACS action, SHA-pinned, permissions: {}, ignore: brands). Updated template/.gitignore with test artifact exclusions (.pytest_cache/, .coverage, coverage.xml, htmlcov/). Copier smoke test: all 8 checks PASS. CICD-01, CICD-02 (formally deferred), CICD-03 (pre-existing), CICD-04 satisfied. 1 commit.
+- **UAT (5 pass, 1 issue):** Tests 1-5 passed (template structure, copier generation, .gitignore, README, hassfest catches errors). Test 6 failed: clean generated project fails hassfest (http dep missing + CONFIG_SCHEMA missing). Live test on GitHub repo Dabnabbit/uat-cicd-test confirmed both failures.
+- **Plan 07-02 (Gap closure, planned):** Fix manifest.json.jinja (add "http" to dependencies) and __init__.py.jinja (add cv import + CONFIG_SCHEMA declaration). 1 task, 2 files. Verified by plan checker. Ready: `/gsd:execute-phase 7 --gaps-only`
 
 ### Phase 6 Execution Summary (COMPLETE)
 - **Plan 06-01 (Wave 1):** Created pyproject.toml.jinja (asyncio_mode=auto, testpaths, pytest-homeassistant-custom-component dep), tests/__init__.py.jinja (non-empty package marker), tests/conftest.py.jinja (auto_enable_custom_integrations autouse fixture + mock_setup_entry fixture with [[ project_domain ]] Copier variable). TEST-01, TEST-05 satisfied. 2 commits.
