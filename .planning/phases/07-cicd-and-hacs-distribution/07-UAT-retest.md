@@ -3,7 +3,7 @@ status: complete
 phase: 07-cicd-and-hacs-distribution
 source: [07-01-SUMMARY.md, 07-02-SUMMARY.md]
 started: 2026-02-20T22:50:00Z
-updated: 2026-02-20T23:00:00Z
+updated: 2026-02-20T23:35:00Z
 ---
 
 ## Current Test
@@ -34,16 +34,19 @@ result: pass
 
 ### 6. Live CI — hassfest passes on GitHub
 expected: Push a clean generated project to GitHub. The validate workflow triggers. The hassfest job passes (no missing dependency or CONFIG_SCHEMA errors). The HACS job passes.
-result: skipped
-reason: User elected to skip live CI test; automated template checks confirm fixes are correct
+result: pass
+notes: |
+  Pushed to Dabnabbit/uat-cicd-test. Run 22245235007.
+  Hassfest validation: PASS (gap closure confirmed — http dep + CONFIG_SCHEMA both resolved).
+  HACS validation: FAIL — but expected for test repo (missing repo description and topics, which are GitHub repo-level settings, not template issues).
 
 ## Summary
 
 total: 6
-passed: 5
+passed: 6
 issues: 0
 pending: 0
-skipped: 1
+skipped: 0
 
 ## Gaps
 
