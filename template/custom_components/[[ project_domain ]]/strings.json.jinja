@@ -6,10 +6,17 @@
         "description": "Enter the connection details for your service.",
         "data": {
           "host": "Host",
-          "port": "Port",
+          "port": "Port"[% if not use_multi_step_config_flow %]
+          ,"api_key": "API Key"[% endif %]
+        }
+      }[% if use_multi_step_config_flow %]
+      ,"credentials": {
+        "title": "Authentication",
+        "description": "Enter your API credentials.",
+        "data": {
           "api_key": "API Key"
         }
-      }
+      }[% endif %]
     },
     "error": {
       "cannot_connect": "Failed to connect",
