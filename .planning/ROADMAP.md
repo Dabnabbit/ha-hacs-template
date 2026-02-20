@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Backend Core** - Always-on integration patterns: API client, coordinator, config/options flow, sensor, device registry, metadata (completed 2026-02-19)
 - [x] **Phase 4: Frontend Card** - Single-file LitElement base card with editor, theme integration, loading/error states, and card registry (completed 2026-02-20)
 - [x] **Phase 5: Conditional Patterns** - Four Copier-conditional file sets: WebSocket, services, multi-coordinator, multi-step config flow (completed 2026-02-20)
-- [ ] **Phase 6: Test Scaffold** - pytest infrastructure with HA fixtures, config flow tests, coordinator mocking, and conditional test files
+- [x] **Phase 6: Test Scaffold** - pytest infrastructure with HA fixtures, config flow tests, coordinator mocking, and conditional test files (completed 2026-02-20)
 - [ ] **Phase 7: CI/CD and HACS Distribution** - GitHub Actions for hassfest/HACS validation, tag-based release workflow, and distribution files
 
 ## Phase Details
@@ -136,5 +136,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 3. Backend Core | 3/3 | Complete    | 2026-02-20 |
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
 | 5. Conditional Patterns | 3/3 | Complete    | 2026-02-20 |
-| 6. Test Scaffold | 2/3 | In Progress|  |
+| 6. Test Scaffold | 3/3 | Complete   | 2026-02-20 |
 | 7. CI/CD and HACS Distribution | 0/TBD | Not started | - |

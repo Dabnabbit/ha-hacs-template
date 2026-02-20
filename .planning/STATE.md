@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 6 (Test Scaffold) in progress — plans 06-01 and 06-02 complete, test template files created
+**Current focus:** Phase 6 (Test Scaffold) COMPLETE — all 3 plans done, TEST-01 through TEST-05 satisfied
 
 ## Current Position
 
-Phase: 6 of 7 (Test Scaffold) — IN PROGRESS
-Plan: 2 of 3 in current phase (06-01 and 06-02 complete)
-Status: 06-02 complete — test_config_flow.py.jinja (4 cases), test_coordinator.py.jinja (2 cases) created. TEST-02 and TEST-03 satisfied.
-Last activity: 2026-02-20 — 06-02 executed, 44/49 requirements satisfied
+Phase: 6 of 7 (Test Scaffold) — COMPLETE
+Plan: 3 of 3 in current phase (06-01, 06-02, 06-03 all complete)
+Status: 06-03 complete — conditional test_websocket.py.jinja created, copier smoke tests pass for all-OFF and all-ON. TEST-04 satisfied.
+Last activity: 2026-02-20 — 06-03 executed, 45/49 requirements satisfied
 
-Progress: [████████░░] ~90% (44/49 requirements satisfied)
+Progress: [█████████░] ~92% (45/49 requirements satisfied)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02)
+- Total plans completed: 15 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03)
 - Average duration: ~2 min
-- Total execution time: ~24 min
+- Total execution time: ~25 min
 
 **By Phase:**
 
@@ -32,7 +32,7 @@ Progress: [████████░░] ~90% (44/49 requirements satisfied)
 | 03-backend-core | 3 | ~5 min | ~2 min |
 | 04-frontend-card | 1 | 2 min | 2 min |
 | 05-conditional-patterns | 3 | 4 min | 1 min |
-| 06-test-scaffold | 2 | 2 min | 1 min |
+| 06-test-scaffold | 3 | 3 min | 1 min |
 
 **Recent Trend:**
 - Last 5 plans: 03-02 (1 min), 03-03 (3 min), 04-01 (2 min), 05-01 (1 min)
@@ -46,6 +46,7 @@ Progress: [████████░░] ~90% (44/49 requirements satisfied)
 | Phase 05-conditional-patterns P03 | 2 | 2 tasks | 1 files |
 | Phase 06-test-scaffold P01 | 1 | 2 tasks | 3 files |
 | Phase 06-test-scaffold P02 | 1 | 2 tasks | 2 files |
+| Phase 06-test-scaffold P03 | 1 | 2 tasks | 1 files |
 
 ## Accumulated Context
 
@@ -92,6 +93,8 @@ Recent decisions affecting current work:
 - [06-01]: mock_setup_entry patches custom_components.[[ project_domain ]].async_setup_entry at top-level __init__ (not config_flow) — where HA calls the function
 - [Phase 06-test-scaffold]: Patch target for config flow is config_flow._async_validate_connection (where called, not where ApiClient is defined) — Pitfall 2 from research
 - [Phase 06-test-scaffold]: Options flow test asserts entry.data[CONF_API_KEY] (not entry.options) — consistent with Phase 3-03 decision that options flow writes to entry.data
+- [06-03]: Conditional test filename [% if use_websocket %]test_websocket.py[% endif %].jinja — identical pattern to Phase 5 source conditional files
+- [06-03]: WebSocket test requires full integration setup (async_setup + async_block_till_done) before ws_client — handlers registered in async_setup, not async_setup_entry
 
 ### Pending Todos
 
@@ -104,12 +107,13 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 06-02-PLAN.md — test_config_flow.py.jinja (4 tests) and test_coordinator.py.jinja (2 tests). TEST-02, TEST-03 satisfied.
-Resume file: .planning/phases/06-test-scaffold/06-02-SUMMARY.md
+Stopped at: Completed 06-03-PLAN.md — conditional test_websocket.py.jinja created, copier smoke tests pass (all-OFF and all-ON). TEST-04 satisfied. Phase 6 complete.
+Resume file: .planning/phases/06-test-scaffold/06-03-SUMMARY.md
 
-### Phase 6 Execution Summary (IN PROGRESS)
+### Phase 6 Execution Summary (COMPLETE)
 - **Plan 06-01 (Wave 1):** Created pyproject.toml.jinja (asyncio_mode=auto, testpaths, pytest-homeassistant-custom-component dep), tests/__init__.py.jinja (non-empty package marker), tests/conftest.py.jinja (auto_enable_custom_integrations autouse fixture + mock_setup_entry fixture with [[ project_domain ]] Copier variable). TEST-01, TEST-05 satisfied. 2 commits.
 - **Plan 06-02 (Wave 2):** Created tests/test_config_flow.py.jinja (4 cases: successful setup via mock_setup_entry, CannotConnect error, duplicate abort via MockConfigEntry unique_id, options flow via config_entries.options asserting entry.data). Created tests/test_coordinator.py.jinja (2 cases: mocked ApiClient.async_get_data success, CannotConnectError translated to UpdateFailed). TEST-02, TEST-03 satisfied. 2 commits.
+- **Plan 06-03 (Wave 3):** Created conditional tests/[% if use_websocket %]test_websocket.py[% endif %].jinja with test_websocket_get_data using hass_ws_client fixture. Copier smoke tests: all-OFF (9 checks PASS, test_websocket.py absent) and all-ON (8 checks PASS, test_websocket.py present). TEST-04 satisfied. 1 commit. Phase 6 COMPLETE.
 
 ### Phase 5 Execution Summary (COMPLETE)
 - **Plan 05-01 (Wave 1):** Replaced websocket.py stub with async handler (@websocket_command + @async_response + async_setup_websocket). Replaced services.py stub with SupportsResponse.OPTIONAL handler (async_register_services). Created new services.yaml conditional template. Updated manifest.json.jinja with conditional websocket_api dependency. COND-01, COND-02, COND-06 satisfied. 2 commits.
