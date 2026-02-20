@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 5 COMPLETE — all three plans executed (COND-01 through COND-06 satisfied); Phase 6 next
+**Current focus:** Milestone v1.0 audit complete — 40/49 requirements satisfied (phases 1-5); phases 6-7 (TEST, CICD) not yet planned
 
 ## Current Position
 
 Phase: 5 of 7 (Conditional Patterns) — COMPLETE
 Plan: 3 of 3 in current phase (05-01, 05-02, 05-03 complete)
-Status: Phase 5 complete — all conditional patterns wired into __init__.py.jinja, copier smoke tests (all-OFF and all-ON) passed
-Last activity: 2026-02-20 — 05-03 executed (COND-05, __init__.py wiring, smoke tests)
+Status: Milestone v1.0 audited — phases 1-5 complete and verified, UAT passed (7/7), integration check clean (5/5 flows). Phases 6-7 not yet planned.
+Last activity: 2026-02-20 — Milestone audit completed, 40/49 requirements satisfied
 
-Progress: [█████████░] ~80% (12/15 estimated total plans)
+Progress: [████████░░] ~82% (40/49 requirements satisfied)
 
 ## Performance Metrics
 
@@ -96,8 +96,8 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 05-03-PLAN.md (__init__.py conditional wiring, copier smoke tests all-OFF and all-ON passed, COND-05 satisfied, Phase 5 complete)
-Resume file: None
+Stopped at: Milestone v1.0 audit complete — 40/49 requirements, 5/5 phases verified+UAT, integration check clean. Phases 6-7 (TEST-01..05, CICD-01..04) remain.
+Resume file: .planning/v1.0-MILESTONE-AUDIT.md
 
 ### Phase 5 Execution Summary (COMPLETE)
 - **Plan 05-01 (Wave 1):** Replaced websocket.py stub with async handler (@websocket_command + @async_response + async_setup_websocket). Replaced services.py stub with SupportsResponse.OPTIONAL handler (async_register_services). Created new services.yaml conditional template. Updated manifest.json.jinja with conditional websocket_api dependency. COND-01, COND-02, COND-06 satisfied. 2 commits.

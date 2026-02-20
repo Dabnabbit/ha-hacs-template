@@ -11,10 +11,10 @@ Requirements for template v1 — generates a HACS-quality Bronze/Silver integrat
 
 - [x] **SCAF-01**: Generated integration uses `async_register_static_paths` with `StaticPathConfig` for frontend JS registration
 - [x] **SCAF-02**: Generated integration uses `async_get_clientsession(hass)` for all HTTP requests (no raw `aiohttp.ClientSession`)
-- [ ] **SCAF-03**: Config flow calls `async_set_unique_id` and `_abort_if_unique_id_configured` to prevent duplicate entries
+- [x] **SCAF-03**: Config flow calls `async_set_unique_id` and `_abort_if_unique_id_configured` to prevent duplicate entries
 - [x] **SCAF-04**: Generated integration stores coordinator in `ConfigEntry.runtime_data` with typed generic dataclass (not `hass.data[DOMAIN]`)
-- [ ] **SCAF-05**: Config flow includes connection validation stub that raises `CannotConnect` and `InvalidAuth`
-- [ ] **SCAF-06**: Options flow uses `OptionsFlow` base class (not `self.config_entry = config_entry` in `__init__`)
+- [x] **SCAF-05**: Config flow includes connection validation stub that raises `CannotConnect` and `InvalidAuth`
+- [x] **SCAF-06**: Options flow uses `OptionsFlow` base class (not `self.config_entry = config_entry` in `__init__`)
 - [x] **SCAF-07**: Static path registration is in domain-level setup (not per-entry) to prevent duplicate registration errors
 - [x] **SCAF-08**: `async_unload_entry` properly cleans up via `async_unload_platforms` (no manual `hass.data` cleanup needed with `runtime_data`)
 
@@ -108,10 +108,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | SCAF-01 | Phase 1 | Complete |
 | SCAF-02 | Phase 1 | Complete |
-| SCAF-03 | Phase 1 | Pending |
+| SCAF-03 | Phase 1 | Complete |
 | SCAF-04 | Phase 1 | Complete |
-| SCAF-05 | Phase 1 | Pending |
-| SCAF-06 | Phase 1 | Pending |
+| SCAF-05 | Phase 1 | Complete |
+| SCAF-06 | Phase 1 | Complete |
 | SCAF-07 | Phase 1 | Complete |
 | SCAF-08 | Phase 1 | Complete |
 | COPR-01 | Phase 2 | Complete |
@@ -163,4 +163,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-19*
-*Last updated: 2026-02-19 — traceability filled after roadmap creation*
+*Last updated: 2026-02-20 — SCAF-03/05/06 checkboxes and traceability updated after milestone audit*

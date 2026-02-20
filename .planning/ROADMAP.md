@@ -81,7 +81,7 @@ Plans:
   5. Card is wrapped in `ha-card` and returns a row count from `getCardSize()` that HA uses for layout sizing
 **Plans**: 1 plan
 Plans:
-- [ ] 04-01-PLAN.md — Enhance card with loading/error states, getGridOptions, getStubConfig(hass), duplicate guards, Lovelace auto-registration, and copier smoke test
+- [x] 04-01-PLAN.md — Enhance card with loading/error states, getGridOptions, getStubConfig(hass), duplicate guards, Lovelace auto-registration, and copier smoke test
 
 ### Phase 5: Conditional Patterns
 **Goal**: All four Copier-conditional feature sets generate correctly when selected and are absent when not selected; `__init__.py` wires them in via minimal conditional blocks
@@ -94,9 +94,9 @@ Plans:
   4. Selecting secondary coordinator generates `coordinator_secondary.py` with its own poll interval; `entry.runtime_data` holds both coordinators
 **Plans**: 3 plans
 Plans:
-- [ ] 05-01-PLAN.md -- WebSocket command handler, service action handler, services.yaml, manifest conditional dependency
-- [ ] 05-02-PLAN.md -- Multi-step config flow inline variant, secondary coordinator
-- [ ] 05-03-PLAN.md -- __init__.py conditional wiring, copier smoke test (all-on / all-off)
+- [x] 05-01-PLAN.md -- WebSocket command handler, service action handler, services.yaml, manifest conditional dependency
+- [x] 05-02-PLAN.md -- Multi-step config flow inline variant, secondary coordinator
+- [x] 05-03-PLAN.md -- __init__.py conditional wiring, copier smoke test (all-on / all-off)
 
 ### Phase 6: Test Scaffold
 **Goal**: Generated projects include a working pytest setup that covers config flow, coordinator, and conditional modules; child project CI can run tests without additional configuration
