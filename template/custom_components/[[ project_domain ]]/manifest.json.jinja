@@ -3,7 +3,7 @@
   "name": "[[ project_name ]]",
   "codeowners": ["@[[ author_name ]]"],
   "config_flow": true,
-  "dependencies": ["frontend"[% if use_websocket %], "websocket_api"[% endif %]],
+  "dependencies": ["frontend", "http"[% if use_websocket %], "websocket_api"[% endif %]],
   "documentation": "[[ documentation_url ]]",
   "integration_type": "[[ integration_type ]]",
   "iot_class": "[[ iot_class ]]",
