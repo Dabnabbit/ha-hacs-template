@@ -5,22 +5,22 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** ALL PHASES COMPLETE. 49/49 active requirements satisfied (CICD-02 formally deferred by user decision). Template produces hassfest-clean generated projects.
+**Current focus:** ALL PHASES COMPLETE. UAT retest passed (5/5, 1 skipped). 49/49 active requirements satisfied (CICD-02 formally deferred). Ready for milestone audit.
 
 ## Current Position
 
 Phase: 7 of 7 (CI/CD and HACS Distribution) — COMPLETE
 Plan: 2 of 2 in current phase (07-01 complete, 07-02 complete — gap closure)
-Status: Phase 7 gap closure complete. All 7 phases done. Template fully functional.
-Last activity: 2026-02-20 — 07-02 executed: http dep + CONFIG_SCHEMA added to templates; Copier smoke tests all PASS
+Status: All 7 phases complete. UAT retest passed (5/5, 1 skipped). Ready for milestone audit.
+Last activity: 2026-02-20 — UAT retest: 5 pass, 1 skipped (live CI). Gap closure verified.
 
 Progress: [██████████] 100% (49/49 active requirements satisfied, CICD-02 deferred)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 16 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03, 07-01)
-- Plans pending: 1 (07-02 gap closure)
+- Total plans completed: 17 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02, 05-03, 06-01, 06-02, 06-03, 07-01, 07-02)
+- Plans pending: 0
 - Average duration: ~2 min
 - Total execution time: ~26 min
 
@@ -128,6 +128,7 @@ Resume action: N/A
 - **Plan 07-01 (Wave 1):** Created template/.github/workflows/validate.yml as static file (two-job pattern: hassfest + HACS action, SHA-pinned, permissions: {}, ignore: brands). Updated template/.gitignore with test artifact exclusions (.pytest_cache/, .coverage, coverage.xml, htmlcov/). Copier smoke test: all 8 checks PASS. CICD-01, CICD-02 (formally deferred), CICD-03 (pre-existing), CICD-04 satisfied. 1 commit.
 - **UAT (5 pass, 1 issue):** Tests 1-5 passed (template structure, copier generation, .gitignore, README, hassfest catches errors). Test 6 failed: clean generated project fails hassfest (http dep missing + CONFIG_SCHEMA missing). Live test on GitHub repo Dabnabbit/uat-cicd-test confirmed both failures.
 - **Plan 07-02 (Gap closure, COMPLETE):** Added "http" to manifest.json.jinja dependencies; added cv import and CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN) to __init__.py.jinja. Copier smoke tests (default + websocket): all 5 checks PASS. CICD-01 fully satisfied. Commit 14d6616.
+- **UAT Retest (5 pass, 1 skipped):** Tests 1-5 pass (template structure, exact copy, .gitignore, README, hassfest compliance). Test 6 skipped (live CI). Gap closure confirmed.
 
 ### Phase 6 Execution Summary (COMPLETE)
 - **Plan 06-01 (Wave 1):** Created pyproject.toml.jinja (asyncio_mode=auto, testpaths, pytest-homeassistant-custom-component dep), tests/__init__.py.jinja (non-empty package marker), tests/conftest.py.jinja (auto_enable_custom_integrations autouse fixture + mock_setup_entry fixture with [[ project_domain ]] Copier variable). TEST-01, TEST-05 satisfied. 2 commits.
