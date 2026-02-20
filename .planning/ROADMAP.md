@@ -65,9 +65,9 @@ Plans:
   5. `manifest.json`, `hacs.json`, and `strings.json`/`translations/en.json` are present and complete; config flow step labels render in the HA UI
 **Plans**: 3 plans
 Plans:
-- [ ] 03-01-PLAN.md — Create ApiClient base class and wire into coordinator
-- [ ] 03-02-PLAN.md — Add device registry, PARALLEL_UPDATES to sensor; verify manifest/HACS metadata
-- [ ] 03-03-PLAN.md — Complete config/options flow with api_key, connection validation, and smoke test
+- [x] 03-01-PLAN.md — Create ApiClient base class and wire into coordinator
+- [x] 03-02-PLAN.md — Add device registry, PARALLEL_UPDATES to sensor; verify manifest/HACS metadata
+- [x] 03-03-PLAN.md — Complete config/options flow with api_key, connection validation, and smoke test
 
 ### Phase 4: Frontend Card
 **Goal**: The generated Lovelace card is installable as a dashboard resource, appears in the card picker, renders with HA theme colors, and shows loading and error states correctly
@@ -79,7 +79,9 @@ Plans:
   3. Card renders using HA theme colors (changes visually when HA theme is switched; no hardcoded hex values)
   4. Card displays a spinner while coordinator data is unavailable and an error message when the entity is unavailable
   5. Card is wrapped in `ha-card` and returns a row count from `getCardSize()` that HA uses for layout sizing
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 04-01-PLAN.md — Enhance card with loading/error states, getGridOptions, getStubConfig(hass), duplicate guards, Lovelace auto-registration, and copier smoke test
 
 ### Phase 5: Conditional Patterns
 **Goal**: All four Copier-conditional feature sets generate correctly when selected and are absent when not selected; `__init__.py` wires them in via minimal conditional blocks
@@ -124,7 +126,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 1. Scaffold Fixes | 2/2 | Complete    | 2026-02-19 |
 | 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
 | 3. Backend Core | 3/3 | Complete    | 2026-02-20 |
-| 4. Frontend Card | 0/TBD | Not started | - |
+| 4. Frontend Card | 0/1 | Not started | - |
 | 5. Conditional Patterns | 0/TBD | Not started | - |
 | 6. Test Scaffold | 0/TBD | Not started | - |
 | 7. CI/CD and HACS Distribution | 0/TBD | Not started | - |
