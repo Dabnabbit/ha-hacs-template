@@ -13,6 +13,15 @@ from homeassistant.core import HomeAssistant
 
 from .const import DOMAIN, FRONTEND_SCRIPT_URL
 from .coordinator import TemplateCoordinator
+[% if use_websocket %]
+from .websocket import async_setup_websocket
+[% endif %]
+[% if use_services %]
+from .services import async_register_services
+[% endif %]
+[% if use_secondary_coordinator %]
+from .coordinator_secondary import TemplateSecondaryCoordinator
+[% endif %]
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -24,6 +33,9 @@ class [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Data:
     """Data for the [[ project_name ]] integration."""
 
     coordinator: TemplateCoordinator
+[% if use_secondary_coordinator %]
+    coordinator_secondary: TemplateSecondaryCoordinator
+[% endif %]
 
 
 type [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]ConfigEntry = ConfigEntry[
@@ -73,6 +85,12 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
     except Exception:  # noqa: BLE001
         _LOGGER.debug("Could not auto-register Lovelace resource; add manually")
 
+[% if use_websocket %]
+    async_setup_websocket(hass)
+[% endif %]
+[% if use_services %]
+    async_register_services(hass)
+[% endif %]
     return True
 
 
@@ -81,7 +99,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: [[ project_domain | repl
     coordinator = TemplateCoordinator(hass, entry)
     await coordinator.async_config_entry_first_refresh()
 
+[% if use_secondary_coordinator %]
+    coordinator_secondary = TemplateSecondaryCoordinator(hass, entry)
+    await coordinator_secondary.async_config_entry_first_refresh()
+[% endif %]
+[% if use_secondary_coordinator %]
+    entry.runtime_data = [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Data(
+        coordinator=coordinator,
+        coordinator_secondary=coordinator_secondary,
+    )
+[% else %]
     entry.runtime_data = [[ project_domain | replace('_', ' ') | title | replace(' ', '') ]]Data(coordinator=coordinator)
+[% endif %]
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
