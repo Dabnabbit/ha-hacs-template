@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 5 IN PROGRESS — 05-01 executed (COND-01, COND-02, COND-06 satisfied); 05-02+ (multi-step config flow, secondary coordinator, __init__.py wiring) next
+**Current focus:** Phase 5 IN PROGRESS — 05-01 and 05-02 executed (COND-01 through COND-04, COND-06 satisfied); 05-03 (__init__.py conditional wiring) next
 
 ## Current Position
 
 Phase: 5 of 7 (Conditional Patterns) — IN PROGRESS
-Plan: 1 of N in current phase (05-01 complete)
-Status: Phase 5 plan 01 complete — WebSocket handler, service handler, services.yaml, manifest websocket_api conditional dependency
-Last activity: 2026-02-20 — 05-01 executed (COND-01, COND-02, COND-06)
+Plan: 2 of N in current phase (05-01 and 05-02 complete)
+Status: Phase 5 plans 01+02 complete — WebSocket/service handlers, multi-step config flow inline, secondary coordinator, strings/translations, manifest conditional dependency
+Last activity: 2026-02-20 — 05-02 executed (COND-03, COND-04)
 
-Progress: [█████████░] ~65% (10/15 estimated total plans)
+Progress: [█████████░] ~67% (11/15 estimated total plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01)
+- Total plans completed: 11 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 03-03, 04-01, 05-01, 05-02)
 - Average duration: ~2 min
-- Total execution time: ~20 min
+- Total execution time: ~21 min
 
 **By Phase:**
 
@@ -31,7 +31,7 @@ Progress: [█████████░] ~65% (10/15 estimated total plans)
 | 02-copier-template-scaffolding | 3 | 9 min | 3 min |
 | 03-backend-core | 3 | ~5 min | ~2 min |
 | 04-frontend-card | 1 | 2 min | 2 min |
-| 05-conditional-patterns | 1 | 1 min | 1 min |
+| 05-conditional-patterns | 2 | 2 min | 1 min |
 
 **Recent Trend:**
 - Last 5 plans: 03-02 (1 min), 03-03 (3 min), 04-01 (2 min), 05-01 (1 min)
@@ -41,6 +41,7 @@ Progress: [█████████░] ~65% (10/15 estimated total plans)
 | Phase 03-backend-core P03 | 3 | 2 tasks | 3 files |
 | Phase 04-frontend-card P01 | 2 | 3 tasks | 2 files |
 | Phase 05-conditional-patterns P01 | 1 | 2 tasks | 4 files |
+| Phase 05-conditional-patterns P02 | 1 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,9 @@ Recent decisions affecting current work:
 - [05-01]: manifest.json conditional websocket_api uses `, "websocket_api"` inside [% if use_websocket %] block — comma placement ensures valid JSON for both flag states
 - [05-01]: services.yaml created as new conditional file (no Phase 2 stub existed) using same [% if use_services %]services.yaml[% endif %].jinja pattern
 - [05-01]: WebSocket handler imports coordinator type lazily inside handler body (noqa: PLC0415) to avoid circular import at module level
+- [Phase 05-conditional-patterns]: Option C confirmed: multi-step flow inlined in config_flow.py.jinja via [% if %] blocks — single-step [% else %] branch is byte-for-byte identical to pre-edit output
+- [Phase 05-conditional-patterns]: DEFAULT_SECONDARY_SCAN_INTERVAL = 300 always included in const.py (unconditional) — harmless if unused, avoids conditional import complexity
+- [Phase 05-conditional-patterns]: coordinator_secondary creates its own ApiClient (not shared with primary) to avoid concurrent refresh race conditions
 
 ### Pending Todos
 
@@ -89,11 +93,12 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 05-01-PLAN.md (WebSocket handler, service handler, services.yaml, manifest websocket_api conditional; COND-01, COND-02, COND-06 satisfied)
+Stopped at: Completed 05-02-PLAN.md (multi-step config flow inline, secondary coordinator, COND-03 and COND-04 satisfied)
 Resume file: None
 
 ### Phase 5 Execution Summary (IN PROGRESS)
 - **Plan 05-01 (Wave 1):** Replaced websocket.py stub with async handler (@websocket_command + @async_response + async_setup_websocket). Replaced services.py stub with SupportsResponse.OPTIONAL handler (async_register_services). Created new services.yaml conditional template. Updated manifest.json.jinja with conditional websocket_api dependency. COND-01, COND-02, COND-06 satisfied. 2 commits.
+- **Plan 05-02 (Wave 1):** Inlined multi-step config flow into config_flow.py.jinja via [% if use_multi_step_config_flow %] blocks (two schemas, __init__, async_step_user chains to async_step_credentials; unique_id in last step). Deleted dead config_flow_multi_step.py stub. Updated strings.json.jinja and translations/en.json.jinja with conditional credentials step. Replaced coordinator_secondary.py stub with TemplateSecondaryCoordinator (300s interval, own ApiClient). Added DEFAULT_SECONDARY_SCAN_INTERVAL = 300 to const.py. COND-03, COND-04 satisfied. 2 commits.
 
 ### Phase 4 Execution Summary (COMPLETE)
 - **Plan 04-01 (Wave 1):** Enhanced [[ project_domain ]]-card.js.jinja with ha-spinner loading state, ha-alert error state, four-state render(), getGridOptions(), getStubConfig(hass) with sensor entity lookup, duplicate element guards. Added _async_register_lovelace_resource() to __init__.py.jinja. Copier smoke test: all 14 checks pass. Advanced git tag 0.1.0 to HEAD. 2 commits.
