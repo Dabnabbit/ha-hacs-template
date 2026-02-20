@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-02-19)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** Phase 6 (Test Scaffold) COMPLETE — all 3 plans done, TEST-01 through TEST-05 satisfied
+**Current focus:** Phase 6 complete (45/49 requirements). Phase 7 (CI/CD and HACS Distribution) is the final phase — CICD-01 through CICD-04 remain.
 
 ## Current Position
 
 Phase: 6 of 7 (Test Scaffold) — COMPLETE
 Plan: 3 of 3 in current phase (06-01, 06-02, 06-03 all complete)
-Status: 06-03 complete — conditional test_websocket.py.jinja created, copier smoke tests pass for all-OFF and all-ON. TEST-04 satisfied.
-Last activity: 2026-02-20 — 06-03 executed, 45/49 requirements satisfied
+Status: Phase 6 complete and verified. 6/7 phases done. Phase 7 (CI/CD) not yet planned.
+Last activity: 2026-02-20 — Phase 6 verified, 45/49 requirements satisfied
 
 Progress: [█████████░] ~92% (45/49 requirements satisfied)
 
@@ -35,8 +35,8 @@ Progress: [█████████░] ~92% (45/49 requirements satisfied)
 | 06-test-scaffold | 3 | 3 min | 1 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-02 (1 min), 03-03 (3 min), 04-01 (2 min), 05-01 (1 min)
-- Trend: Consistent
+- Last 5 plans: 05-03 (1 min), 06-01 (1 min), 06-02 (1 min), 06-03 (1 min)
+- Trend: Consistent, accelerating
 
 *Updated after each plan completion*
 | Phase 03-backend-core P03 | 3 | 2 tasks | 3 files |
@@ -107,8 +107,8 @@ None currently. Phase 4 LitElement version concern resolved: prototype extractio
 ## Session Continuity
 
 Last session: 2026-02-20
-Stopped at: Completed 06-03-PLAN.md — conditional test_websocket.py.jinja created, copier smoke tests pass (all-OFF and all-ON). TEST-04 satisfied. Phase 6 complete.
-Resume file: .planning/phases/06-test-scaffold/06-03-SUMMARY.md
+Stopped at: Phase 6 (Test Scaffold) fully complete and verified — 10/10 must-haves, all 5 TEST requirements satisfied. Phase 7 (CI/CD and HACS Distribution) is next and final phase.
+Resume file: .planning/phases/06-test-scaffold/06-VERIFICATION.md
 
 ### Phase 6 Execution Summary (COMPLETE)
 - **Plan 06-01 (Wave 1):** Created pyproject.toml.jinja (asyncio_mode=auto, testpaths, pytest-homeassistant-custom-component dep), tests/__init__.py.jinja (non-empty package marker), tests/conftest.py.jinja (auto_enable_custom_integrations autouse fixture + mock_setup_entry fixture with [[ project_domain ]] Copier variable). TEST-01, TEST-05 satisfied. 2 commits.

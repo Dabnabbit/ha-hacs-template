@@ -51,7 +51,7 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Create copier.yml with _envops custom delimiters and restructure all files into template/ with .jinja variable substitutions
 - [x] 02-02-PLAN.md — Add conditional file templates and smoke-test copier copy/update pipeline end-to-end
-- [ ] 02-03-PLAN.md — Gap closure: add missing multi-step config flow conditional stub (COPR-05)
+- [x] 02-03-PLAN.md — Gap closure: add missing multi-step config flow conditional stub (COPR-05)
 
 ### Phase 3: Backend Core
 **Goal**: A generated integration with default options (single-step config, single coordinator) installs, loads, creates a device entry, and exposes a sensor entity in HA
@@ -109,9 +109,9 @@ Plans:
   4. When WebSocket support is selected, a `test_websocket.py` file is generated; when not selected, no websocket test file appears
 **Plans**: 3 plans
 Plans:
-- [ ] 06-01-PLAN.md — pytest infrastructure: pyproject.toml, tests/__init__.py, conftest.py with HA fixtures
-- [ ] 06-02-PLAN.md — Always-on test files: test_config_flow.py (4 cases) and test_coordinator.py (2 cases)
-- [ ] 06-03-PLAN.md — Conditional test_websocket.py and copier smoke test (all-OFF / all-ON)
+- [x] 06-01-PLAN.md — pytest infrastructure: pyproject.toml, tests/__init__.py, conftest.py with HA fixtures
+- [x] 06-02-PLAN.md — Always-on test files: test_config_flow.py (4 cases) and test_coordinator.py (2 cases)
+- [x] 06-03-PLAN.md — Conditional test_websocket.py and copier smoke test (all-OFF / all-ON)
 
 ### Phase 7: CI/CD and HACS Distribution
 **Goal**: Every push to a generated project runs hassfest and HACS validation automatically; tagging a release produces a distribution zip with the correct manifest version injected
@@ -132,7 +132,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Scaffold Fixes | 2/2 | Complete    | 2026-02-19 |
-| 2. Copier Template Scaffolding | 2/3 | Complete    | 2026-02-19 |
+| 2. Copier Template Scaffolding | 3/3 | Complete    | 2026-02-19 |
 | 3. Backend Core | 3/3 | Complete    | 2026-02-20 |
 | 4. Frontend Card | 1/1 | Complete   | 2026-02-20 |
 | 5. Conditional Patterns | 3/3 | Complete    | 2026-02-20 |
