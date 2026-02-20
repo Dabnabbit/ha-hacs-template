@@ -1,5 +1,5 @@
 ---
-status: complete
+status: diagnosed
 phase: 07-cicd-and-hacs-distribution
 source: [07-01-SUMMARY.md]
 started: 2026-02-20T20:00:00Z
@@ -53,7 +53,13 @@ skipped: 0
   reason: "User reported: hassfest fails: (1) http component used but not in manifest dependencies — template uses async_register_static_paths from homeassistant.components.http but manifest only lists frontend in dependencies. (2) CONFIG_SCHEMA not defined — config-entry-only integrations should set CONFIG_SCHEMA = cv.config_entry_only_config_schema. HACS fails on repo metadata (no topics/description) which is per-repo, not template."
   severity: major
   test: 6
-  root_cause: ""
-  artifacts: []
-  missing: []
-  debug_session: ""
+  root_cause: "Two missing declarations in template: (1) manifest.json.jinja dependencies array lacks 'http' — hassfest checks direct imports only, frontend's transitive dep on http gives no coverage. (2) __init__.py.jinja defines async_setup but no CONFIG_SCHEMA — hassfest requires config-entry-only integrations to declare CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)."
+  artifacts:
+    - path: "template/custom_components/[[ project_domain ]]/manifest.json.jinja"
+      issue: "dependencies array missing 'http'"
+    - path: "template/custom_components/[[ project_domain ]]/__init__.py.jinja"
+      issue: "No CONFIG_SCHEMA defined, no cv import"
+  missing:
+    - "Add 'http' to dependencies array in manifest.json.jinja"
+    - "Add 'from homeassistant.helpers import config_validation as cv' import to __init__.py.jinja"
+    - "Add 'CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)' after PLATFORMS declaration in __init__.py.jinja"
