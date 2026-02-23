@@ -2,24 +2,51 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-02-20)
+See: .planning/PROJECT.md (updated 2026-02-23)
 
 **Core value:** Every shared integration pattern is decided and implemented once, so child projects inherit correct, modern, community-quality code
-**Current focus:** v1.0 MVP shipped. Planning next milestone.
+**Current focus:** v1.1 fixes shipped. Backported lessons from ha-argos-translate.
 
 ## Current Position
 
-Phase: v1.0 complete (7 phases, 17 plans)
-Status: Milestone v1.0 shipped and archived.
-Last activity: 2026-02-20 — Milestone v1.0 archived, tagged, PROJECT.md evolved.
+Phase: v1.1 complete
+Status: All fixes and improvements from ha-argos-translate field testing backported.
+Last activity: 2026-02-23 — v1.1 fixes applied (11 files modified, 3 files added).
 
 Progress: v1.0 [██████████] 100% SHIPPED
+Progress: v1.1 [██████████] 100% SHIPPED
+
+## v1.1 Changes Summary
+
+### Bug Fixes
+- Options flow validates connection before saving (previously saved blindly)
+- Options flow reloads integration after config update (previously coordinator kept old config)
+- Config flow preserves user input on error via add_suggested_values_to_schema
+- API _request() replaces raise_for_status() with explicit HTTP status checks (ServerError vs CannotConnectError)
+- API client skips auth headers when no API key configured
+
+### Improvements
+- CONF_API_KEY changed from vol.Required to vol.Optional with empty default
+- SSL/HTTPS support via CONF_USE_SSL in config flow, options flow, API client, coordinator
+- Service handler demonstrates coordinator lookup from config entries
+- SupportsResponse.ONLY for query-style services (was OPTIONAL)
+- Binary sensor platform for service connectivity status
+
+### New Templates
+- binary_sensor.py.jinja — connectivity binary sensor
+- test_sensor.py.jinja — sensor value, unique_id, and binary sensor tests
+- test_services.py.jinja — service call and missing entry tests (conditional on use_services)
+
+### Updated Templates
+- conftest.py.jinja — added mock_config_entry shared fixture
+- test_config_flow.py.jinja — options flow validation/error test + reload verification
+- strings.json.jinja / en.json.jinja — options error strings and SSL field labels
 
 ## Accumulated Context
 
 ### Decisions
 
-Full decision log in PROJECT.md Key Decisions table (14 decisions with outcomes).
+Full decision log in PROJECT.md Key Decisions table (21 decisions with outcomes).
 
 ### Pending Todos
 
@@ -31,6 +58,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-02-20
-Stopped at: v1.0 milestone completed and archived.
-Resume action: /gsd:new-milestone (fresh context window recommended)
+Last session: 2026-02-23
+Stopped at: v1.1 fixes committed.
+Resume action: Start next child project or plan v2 features.

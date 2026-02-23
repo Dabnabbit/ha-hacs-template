@@ -6,11 +6,12 @@
         "description": "Enter the connection details for your service.",
         "data": {
           "host": "Host",
-          "port": "Port"[% if not use_multi_step_config_flow %]
-          ,"api_key": "API Key"[% endif %]
+          "port": "Port",
+          "use_ssl": "Use SSL"[% if not use_multi_step_config_flow %],
+          "api_key": "API Key"[% endif %]
         }
-      }[% if use_multi_step_config_flow %]
-      ,"credentials": {
+      }[% if use_multi_step_config_flow %],
+      "credentials": {
         "title": "Authentication",
         "description": "Enter your API credentials.",
         "data": {
@@ -34,9 +35,15 @@
         "data": {
           "host": "Host",
           "port": "Port",
+          "use_ssl": "Use SSL",
           "api_key": "API Key"
         }
       }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error"
     }
   }
 }

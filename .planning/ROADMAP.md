@@ -3,6 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1-7 (shipped 2026-02-20)
+- ✅ **v1.1 Fixes** — Backport fixes from ha-argos-translate (shipped 2026-02-23)
 
 ## Phases
 
@@ -19,6 +20,26 @@
 
 </details>
 
+### v1.1 Fixes (2026-02-23)
+
+Backported from ha-argos-translate field testing. All changes in a single pass:
+
+- [x] Fix: Options flow validates connection before saving
+- [x] Fix: Options flow reloads integration after config update
+- [x] Fix: Config flow preserves user input on error (add_suggested_values_to_schema)
+- [x] Fix: API _request() distinguishes ServerError from CannotConnectError (replaces raise_for_status)
+- [x] Fix: API client skips empty auth headers when no API key
+- [x] Improvement: CONF_API_KEY optional with empty default
+- [x] Improvement: SSL/HTTPS support via CONF_USE_SSL toggle
+- [x] Improvement: Service handler demonstrates coordinator lookup pattern
+- [x] Improvement: SupportsResponse.ONLY for query-style services
+- [x] Addition: Binary sensor platform (connectivity status)
+- [x] Addition: test_sensor.py.jinja (sensor + binary sensor tests)
+- [x] Addition: test_services.py.jinja (conditional, service + missing entry tests)
+- [x] Addition: Options flow validation/error test in test_config_flow.py.jinja
+- [x] Addition: Shared mock_config_entry fixture in conftest.py.jinja
+- [x] Update: strings.json + en.json with options error strings and SSL field
+
 ## Progress
 
 | Phase                          | Milestone | Plans Complete | Status   | Completed  |
@@ -30,6 +51,7 @@
 | 5. Conditional Patterns        | v1.0      | 3/3            | Complete | 2026-02-20 |
 | 6. Test Scaffold               | v1.0      | 3/3            | Complete | 2026-02-20 |
 | 7. CI/CD and HACS Distribution | v1.0      | 2/2            | Complete | 2026-02-20 |
+| v1.1 Fixes                     | v1.1      | —              | Complete | 2026-02-23 |
 
 ---
 *Full v1.0 details: milestones/v1.0-ROADMAP.md*

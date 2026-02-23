@@ -34,11 +34,23 @@ Every shared integration pattern is decided and implemented once in this templat
 - ✓ HACS distribution structure (hacs.json, manifest.json, README pattern) — v1.0
 - ✓ Minimum HA version 2025.7+ across all generated projects — v1.0
 
+- ✓ Options flow validates connection before saving and reloads integration — v1.1
+- ✓ Config flow preserves user input on error via add_suggested_values_to_schema — v1.1
+- ✓ API client distinguishes server errors (4xx/5xx) from connection failures via ServerError — v1.1
+- ✓ API client skips auth headers when no API key configured — v1.1
+- ✓ CONF_API_KEY optional with empty default (not all services require auth) — v1.1
+- ✓ SSL/HTTPS support via CONF_USE_SSL in config flow, options flow, API client, and coordinator — v1.1
+- ✓ Service handler demonstrates coordinator lookup from config entries with ServiceValidationError — v1.1
+- ✓ Service template uses SupportsResponse.ONLY for query-style services — v1.1
+- ✓ Binary sensor platform for service connectivity status — v1.1
+- ✓ Sensor and binary sensor test template (test_sensor.py.jinja) — v1.1
+- ✓ Service call test template (test_services.py.jinja conditional) — v1.1
+- ✓ Options flow test covers validation failure and reload behavior — v1.1
+
 ### Active
 
 - [ ] CI/CD: Tag-based release workflow with version injection and zip packaging (deferred from v1.0 to per-project setup)
 - [ ] Multi-step config flow test adaptation (test_config_flow.py.jinja conditional branches)
-- [ ] Service call test template (test_services.py.jinja conditional)
 - [ ] Diagnostics platform with async_get_config_entry_diagnostics and redaction
 - [ ] quality_scale.yaml pre-filled with Bronze/Silver compliance
 
@@ -58,9 +70,9 @@ Every shared integration pattern is decided and implemented once in this templat
 ## Context
 
 Shipped v1.0 with 25 template files (331 LOC) across 7 phases in 2 days.
+Updated to v1.1 with 28 template files — backporting fixes and improvements from ha-argos-translate field testing.
 Tech stack: Copier, Jinja2 (custom `[[ ]]` / `[% %]` delimiters), Python 3.12+, LitElement, pytest.
 Generated integrations pass both `hassfest` and `hacs/action` validation on GitHub Actions.
-Two low-severity test coverage gaps identified as v2 candidates (multi-step config flow test adaptation, services test template).
 
 ### Child Projects
 
@@ -97,6 +109,12 @@ Three integrations share this template as their upstream:
 | CICD-02 release workflow deferred | Per-project customization needed (version format, zip structure, changelog). Not a template concern. | ✓ Good — correct scoping decision |
 | hassfest requires "http" in manifest deps | Even though "frontend" transitively depends on "http", hassfest checks direct imports only. | ✓ Good — caught and fixed in Phase 7 gap closure |
 | CONFIG_SCHEMA required for config-entry-only with async_setup | hassfest mandates cv.config_entry_only_config_schema(DOMAIN) when async_setup is defined. | ✓ Good — caught and fixed in Phase 7 gap closure |
+| Options flow must validate + reload | Without validation, bad config breaks coordinator silently. Without reload, old credentials persist until HA restart. | ✓ Good — discovered via ha-argos-translate field testing |
+| ServerError separate from CannotConnectError | raise_for_status() misclassifies 4xx as connection failure (both are ClientError subclasses). Explicit status checks distinguish reachable-but-rejected from unreachable. | ✓ Good — enables correct coordinator error state management |
+| CONF_API_KEY optional by default | Not all services require auth. Required API key blocks setup for open services like LibreTranslate. | ✓ Good — matches real-world usage in ha-argos-translate |
+| SSL toggle in config flow | Real-world services may run behind HTTPS. Template hardcoded http:// which blocked HTTPS services. | ✓ Good — runtime toggle covers both protocols |
+| Binary sensor for connectivity | Polling integrations need a visible online/offline indicator. CoordinatorEntity + last_update_success is the standard pattern. | ✓ Good — immediate visibility of service health |
+| SupportsResponse.ONLY for query services | OPTIONAL implies side-effect + optional response. Query services that always return data should use ONLY to prevent silent data loss when callers forget return_response. | ✓ Good — clearer API contract |
 
 ---
-*Last updated: 2026-02-20 after v1.0 milestone*
+*Last updated: 2026-02-23 after v1.1 fixes from ha-argos-translate lessons*
